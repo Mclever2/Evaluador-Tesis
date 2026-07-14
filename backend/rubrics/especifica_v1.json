@@ -1,0 +1,841 @@
+{
+  "id": "especifica_v1",
+  "nombre": "Rúbrica de calidad metodológica UPAO 2026",
+  "tipo": "ponderada_3_niveles",
+  "escala": {
+    "cumple": 1.0,
+    "parcial": 0.5,
+    "no_cumple": 0.0
+  },
+  "niveles_calidad": [
+    {
+      "min": 90.0,
+      "max": 100.0,
+      "etiqueta": "Excelente",
+      "accion": "Aprobar sin observaciones"
+    },
+    {
+      "min": 75.0,
+      "max": 89.99,
+      "etiqueta": "Bueno",
+      "accion": "Aprobar con observaciones menores"
+    },
+    {
+      "min": 60.0,
+      "max": 74.99,
+      "etiqueta": "Regular",
+      "accion": "Requiere correcciones sustantivas"
+    },
+    {
+      "min": 0.0,
+      "max": 59.99,
+      "etiqueta": "Insuficiente",
+      "accion": "Reformular el proyecto"
+    }
+  ],
+  "secciones": [
+    {
+      "id": "S01",
+      "nombre": "Título del proyecto de tesis",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "titulo",
+        "titulo del proyecto",
+        "titulo tentativo",
+        "titulo de la investigacion"
+      ],
+      "items": [
+        {
+          "id": "1.1",
+          "criterio": "El título refleja con precisión el fenómeno o variable dependiente que se estudia, sin términos vagos ni ambiguos.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 35-36"
+        },
+        {
+          "id": "1.2",
+          "criterio": "El título incluye explícitamente la variable independiente o el factor causal/comparativo del estudio.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 35-36"
+        },
+        {
+          "id": "1.3",
+          "criterio": "El título indica el contexto o unidad de análisis (institución, población, lugar o periodo) de forma que delimite el alcance.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 35-36"
+        },
+        {
+          "id": "1.4",
+          "criterio": "El título no supera las 20 palabras y está redactado sin comillas, abreviaturas ni siglas sin definir.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 35-36"
+        },
+        {
+          "id": "1.5",
+          "criterio": "El título es coherente con los objetivos, hipótesis y diseño del estudio (trazabilidad interna).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 35-36"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "nombre": "Descripción y delimitación del problema",
+      "puntaje_max": 10.0,
+      "aliases": [
+        "descripcion del problema",
+        "delimitacion del problema",
+        "descripcion y delimitacion del problema",
+        "realidad problematica",
+        "descripcion de la realidad problematica",
+        "planteamiento del problema"
+      ],
+      "items": [
+        {
+          "id": "2.1",
+          "criterio": "Se presenta evidencia empírica (datos estadísticos, estudios previos o reportes oficiales) que demuestra la existencia del problema.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.2",
+          "criterio": "El problema está enmarcado desde lo global hacia lo local (contextualización multinivel: mundial → regional → local).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.3",
+          "criterio": "Se identifica con claridad la brecha de conocimiento o la deficiencia tecnológica/metodológica que motiva el estudio.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.4",
+          "criterio": "Se delimitan las variables principales del problema (qué se va a medir o comparar) de manera explícita.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.5",
+          "criterio": "Se delimita el alcance temporal y espacial del estudio (periodo y lugar de ejecución).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.6",
+          "criterio": "La descripción del problema es coherente con el tipo y diseño de investigación declarado más adelante.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.7",
+          "criterio": "Se mencionan las consecuencias o impacto negativo de no resolver el problema (argumento de urgencia o relevancia).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.8",
+          "criterio": "La redacción es clara, libre de ambigüedad y no mezcla el problema con la solución propuesta.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        },
+        {
+          "id": "2.9",
+          "criterio": "El problema puede ser investigado empíricamente, es decir, sus variables son observables o medibles.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 37-44"
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "nombre": "Formulación del problema (pregunta central)",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "formulacion del problema",
+        "enunciado del problema",
+        "pregunta de investigacion",
+        "problema general",
+        "problema central del estudio",
+        "problema central"
+      ],
+      "items": [
+        {
+          "id": "3.1",
+          "criterio": "El problema está formulado como una pregunta clara, directa y sin ambigüedad (¿en qué medida?, ¿qué efecto?, ¿cómo se relaciona?).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 38-40"
+        },
+        {
+          "id": "3.2",
+          "criterio": "La pregunta involucra al menos dos variables o conceptos y su posible relación, diferencia o efecto.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 38-40"
+        },
+        {
+          "id": "3.3",
+          "criterio": "La pregunta es respondible mediante el diseño de investigación propuesto (no requiere datos imposibles de obtener).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 38-40"
+        },
+        {
+          "id": "3.4",
+          "criterio": "La pregunta no es demasiado amplia ni demasiado estrecha; delimita un problema tratable en el tiempo del estudio.",
+          "peso": 0.75,
+          "parcial": 0.38,
+          "referencia": "HS2018 Cap. 2, pp. 38-40"
+        },
+        {
+          "id": "3.5",
+          "criterio": "La pregunta es coherente con los objetivos (la respuesta a la pregunta equivale a lograr el objetivo general).",
+          "peso": 0.75,
+          "parcial": 0.38,
+          "referencia": "HS2018 Cap. 2, pp. 38-40"
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "nombre": "Objetivos de la investigación",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "objetivos",
+        "objetivos de la investigacion",
+        "objetivo general",
+        "objetivos especificos"
+      ],
+      "items": [
+        {
+          "id": "4.1",
+          "criterio": "El objetivo general inicia con un verbo en infinitivo de acción observable (determinar, evaluar, comparar, establecer, identificar).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.2",
+          "criterio": "El objetivo general es congruente con la pregunta central del estudio y abarca su totalidad.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.3",
+          "criterio": "Los objetivos específicos son derivaciones lógicas del objetivo general que, sumados, lo cubren completamente.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.4",
+          "criterio": "Cada objetivo específico es independiente (no se superponen entre sí) y aborda un aspecto distinto del problema.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.5",
+          "criterio": "Los objetivos son alcanzables con los recursos, tiempo y diseño declarados en el proyecto.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.6",
+          "criterio": "Los objetivos no confunden el medio con el fin (no describen actividades del investigador sino resultados esperados del estudio).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        },
+        {
+          "id": "4.7",
+          "criterio": "Existe correspondencia directa entre los objetivos específicos y las hipótesis específicas (trazabilidad).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 40-42; pp. 105-108"
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "nombre": "Importancia y justificación del estudio",
+      "puntaje_max": 7.0,
+      "aliases": [
+        "justificacion",
+        "importancia y justificacion",
+        "justificacion del estudio",
+        "justificacion de la investigacion",
+        "importancia del estudio"
+      ],
+      "items": [
+        {
+          "id": "5.1",
+          "criterio": "La justificación teórica explica qué vacío de conocimiento llena el estudio o qué aporte hace a la teoría existente.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        },
+        {
+          "id": "5.2",
+          "criterio": "La justificación práctica señala a quién benefician los resultados y de qué manera concreta (beneficio específico, no genérico).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        },
+        {
+          "id": "5.3",
+          "criterio": "La justificación metodológica indica si se desarrolla, adapta o valida algún instrumento, método o técnica nueva.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        },
+        {
+          "id": "5.4",
+          "criterio": "La justificación social especifica el impacto en la comunidad, sector o sociedad afectada por el problema.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        },
+        {
+          "id": "5.5",
+          "criterio": "Las cuatro dimensiones de justificación (teórica, práctica, metodológica, social) están desarrolladas con argumentos propios, no como listas vacías.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        },
+        {
+          "id": "5.6",
+          "criterio": "La importancia del estudio está vinculada a la magnitud o prevalencia del problema descrito en la sección anterior.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 43-46"
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "nombre": "Limitaciones del estudio",
+      "puntaje_max": 3.0,
+      "aliases": [
+        "limitaciones",
+        "limitaciones del estudio",
+        "alcances y limitaciones",
+        "viabilidad"
+      ],
+      "items": [
+        {
+          "id": "6.1",
+          "criterio": "Se identifican limitaciones reales del estudio (acceso, tiempo, muestra, instrumentos) y no confunde limitaciones con debilidades del investigador.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 46-47"
+        },
+        {
+          "id": "6.2",
+          "criterio": "Las limitaciones están relacionadas específicamente con la generalización de los resultados o con la cobertura del problema.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 46-47"
+        },
+        {
+          "id": "6.3",
+          "criterio": "Se indica cómo las limitaciones se mitigan o se asumen sin invalidar los resultados del estudio.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2, pp. 46-47"
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "nombre": "Marco teórico (antecedentes y base teórica)",
+      "puntaje_max": 12.0,
+      "aliases": [
+        "marco teorico",
+        "antecedentes",
+        "antecedentes de la investigacion",
+        "bases teoricas",
+        "marco referencial",
+        "fundamentacion teorica",
+        "definicion de terminos"
+      ],
+      "items": [
+        {
+          "id": "7.1",
+          "criterio": "Los antecedentes presentados son investigaciones previas directamente relacionadas con las variables del estudio (no temas periféricos).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.2",
+          "criterio": "Cada antecedente incluye: autor(es), año, objetivo, metodología, resultado principal e implicación para el presente estudio.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.3",
+          "criterio": "Los antecedentes son recientes (últimos 5 años preferentemente, máximo 10 años salvo teorías seminales).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.4",
+          "criterio": "El marco histórico contextualiza la evolución del problema o fenómeno estudiado en el tiempo (si aplica).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.5",
+          "criterio": "La base teórica de la variable independiente está sustentada en teorías, modelos o enfoques reconocidos de la disciplina.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.6",
+          "criterio": "La base teórica de la variable dependiente incluye su definición conceptual, dimensiones e indicadores.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.7",
+          "criterio": "Las teorías seleccionadas son coherentes con el enfoque cuantitativo del estudio (no mezcla sin justificación con marcos cualitativos).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.8",
+          "criterio": "La definición de términos básicos cubre todos los conceptos clave del título y del problema, con fuente citada.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.9",
+          "criterio": "El marco teórico en su conjunto sustenta y justifica la relación entre las variables propuesta en la hipótesis.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        },
+        {
+          "id": "7.10",
+          "criterio": "Las citas y referencias siguen un formato bibliográfico consistente (APA u otro declarado) sin mezclas de estilos.",
+          "peso": 0.5,
+          "parcial": 0.25,
+          "referencia": "HS2018 Cap. 3, pp. 58-88; Cap. 4, pp. 89-110"
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "nombre": "Hipótesis",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "hipotesis",
+        "hipotesis y variables",
+        "hipotesis general",
+        "hipotesis especificas",
+        "formulacion de la hipotesis",
+        "supuestos basicos"
+      ],
+      "items": [
+        {
+          "id": "8.1",
+          "criterio": "La hipótesis general establece una relación o diferencia entre la variable independiente y la dependiente de forma explícita.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.2",
+          "criterio": "La hipótesis está formulada como afirmación (no como pregunta) y en términos claros y medibles.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.3",
+          "criterio": "Las hipótesis específicas se derivan lógicamente de la hipótesis general y se corresponden con los objetivos específicos.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.4",
+          "criterio": "Las hipótesis son falsables empíricamente (pueden refutarse con datos).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.5",
+          "criterio": "Las variables en las hipótesis están operacionalizadas o son operacionalizables (tienen indicadores medibles).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.6",
+          "criterio": "Los supuestos básicos (del contexto o del fenómeno) son explícitos y coherentes con el marco teórico.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        },
+        {
+          "id": "8.7",
+          "criterio": "El número de hipótesis específicas es consistente con el número de objetivos específicos (correspondencia uno a uno o justificada).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 104-130"
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "nombre": "Variables y operacionalización",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "variables",
+        "operacionalizacion de variables",
+        "operacionalizacion",
+        "variables y operacionalizacion",
+        "definicion y operacionalizacion de variables"
+      ],
+      "items": [
+        {
+          "id": "9.1",
+          "criterio": "La definición conceptual de cada variable está sustentada en un autor o teoría citada, no es elaborada sin respaldo.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.2",
+          "criterio": "La definición operacional especifica cómo se medirá la variable en este estudio (instrumento, escala, procedimiento).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.3",
+          "criterio": "Las dimensiones derivan lógicamente de la definición conceptual y cubren de forma exhaustiva el constructo.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.4",
+          "criterio": "Los indicadores son observables o medibles y corresponden a la dimensión que representan.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.5",
+          "criterio": "La escala de medición es coherente con la naturaleza de la variable (nominal, ordinal, de intervalo o razón) según Sampieri.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.6",
+          "criterio": "La tabla de operacionalización es completa: incluye variable, definición conceptual, definición operacional, dimensiones, indicadores, ítems y escala.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        },
+        {
+          "id": "9.7",
+          "criterio": "No existen variables mencionadas en la hipótesis que no aparezcan operacionalizadas en la tabla.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 5, pp. 130-145; Cap. 8, pp. 197-220"
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "nombre": "Matriz de consistencia",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "matriz de consistencia"
+      ],
+      "items": [
+        {
+          "id": "10.1",
+          "criterio": "El problema general, objetivo general e hipótesis general son coherentes entre sí (responden a lo mismo).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2 y Cap. 5"
+        },
+        {
+          "id": "10.2",
+          "criterio": "Los problemas, objetivos e hipótesis específicos tienen correspondencia uno a uno (trazabilidad vertical).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 2 y Cap. 5"
+        },
+        {
+          "id": "10.3",
+          "criterio": "Las variables e indicadores en la matriz coinciden exactamente con los declarados en la sección de variables.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2 y Cap. 5"
+        },
+        {
+          "id": "10.4",
+          "criterio": "La metodología declarada en la matriz (enfoque, tipo, diseño, población, muestra) es coherente con el marco metodológico.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 2 y Cap. 5"
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "nombre": "Tipo y método de investigación",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "tipo y metodo de investigacion",
+        "tipo de investigacion",
+        "metodo de investigacion",
+        "enfoque de investigacion",
+        "tipo y nivel de investigacion"
+      ],
+      "items": [
+        {
+          "id": "11.1",
+          "criterio": "El enfoque de investigación (cuantitativo) es coherente con la naturaleza del problema y los objetivos.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 1, pp. 4-24; Cap. 5, pp. 128-154"
+        },
+        {
+          "id": "11.2",
+          "criterio": "El tipo de investigación (aplicada/básica) está justificado en relación con el propósito del estudio.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 1, pp. 4-24; Cap. 5, pp. 128-154"
+        },
+        {
+          "id": "11.3",
+          "criterio": "El alcance del estudio (exploratorio, descriptivo, correlacional, explicativo) está correctamente identificado y justificado con base en el estado del conocimiento.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 1, pp. 4-24; Cap. 5, pp. 128-154"
+        },
+        {
+          "id": "11.4",
+          "criterio": "El método (hipotético-deductivo u otro) es coherente con el enfoque y el tipo de investigación declarados.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 1, pp. 4-24; Cap. 5, pp. 128-154"
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "nombre": "Diseño del estudio",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "diseno del estudio",
+        "diseno de investigacion",
+        "diseno de la investigacion",
+        "diseno de contrastacion",
+        "diseno metodologico"
+      ],
+      "items": [
+        {
+          "id": "12.1",
+          "criterio": "El diseño (experimental, cuasi-experimental, no experimental) está correctamente identificado según la manipulación o no de variables.",
+          "peso": 2.0,
+          "parcial": 1.0,
+          "referencia": "HS2018 Cap. 7, pp. 154-185"
+        },
+        {
+          "id": "12.2",
+          "criterio": "Si es experimental o cuasi-experimental, se especifica el tipo de preprueba/posprueba, grupos de control y tratamiento.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 7, pp. 154-185"
+        },
+        {
+          "id": "12.3",
+          "criterio": "El diseño es coherente con el alcance del estudio (un diseño correlacional no puede ser meramente descriptivo ni viceversa).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 7, pp. 154-185"
+        },
+        {
+          "id": "12.4",
+          "criterio": "El periodo o corte temporal (longitudinal o transversal) está declarado y justificado.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 7, pp. 154-185"
+        },
+        {
+          "id": "12.5",
+          "criterio": "El diseño permite responder efectivamente a las preguntas de investigación y contrastar las hipótesis.",
+          "peso": 2.0,
+          "parcial": 1.0,
+          "referencia": "HS2018 Cap. 7, pp. 154-185"
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "nombre": "Población y muestra",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "poblacion y muestra",
+        "poblacion",
+        "muestra",
+        "muestreo",
+        "unidad de analisis"
+      ],
+      "items": [
+        {
+          "id": "13.1",
+          "criterio": "La población está definida con criterios precisos de inclusión y exclusión (no es una mención genérica).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        },
+        {
+          "id": "13.2",
+          "criterio": "El tamaño de la muestra está calculado o justificado (fórmula estadística, saturación o criterio muestral explícito).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        },
+        {
+          "id": "13.3",
+          "criterio": "El tipo de muestreo (probabilístico o no probabilístico) está declarado y es coherente con los objetivos del estudio.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        },
+        {
+          "id": "13.4",
+          "criterio": "Se especifica el procedimiento concreto de selección de la muestra (muestreo aleatorio simple, estratificado, por conveniencia, etc.).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        },
+        {
+          "id": "13.5",
+          "criterio": "Los criterios de inclusión y exclusión son pertinentes al fenómeno de estudio y no introduce sesgos injustificados.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        },
+        {
+          "id": "13.6",
+          "criterio": "La muestra es suficiente para lograr el poder estadístico necesario para las pruebas planteadas.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 8, pp. 190-216"
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "nombre": "Técnicas e instrumentos de recolección de datos",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "tecnicas e instrumentos de recoleccion de datos",
+        "tecnicas e instrumentos",
+        "instrumentos de recoleccion de datos",
+        "tecnicas de recoleccion de datos",
+        "recoleccion de datos"
+      ],
+      "items": [
+        {
+          "id": "14.1",
+          "criterio": "La técnica de recolección (encuesta, observación, análisis documental, experimento) es coherente con el diseño y las variables.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 9, pp. 217-262"
+        },
+        {
+          "id": "14.2",
+          "criterio": "El instrumento seleccionado o construido mide exactamente los indicadores de las variables operacionalizadas.",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 9, pp. 217-262"
+        },
+        {
+          "id": "14.3",
+          "criterio": "Se indica el proceso de validación del instrumento (validez de contenido, constructo o criterio) con autor o procedimiento específico.",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 9, pp. 217-262"
+        },
+        {
+          "id": "14.4",
+          "criterio": "Se indica la confiabilidad del instrumento (Alfa de Cronbach, test-retest u otro coeficiente pertinente).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 9, pp. 217-262"
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "nombre": "Técnicas de procesamiento y análisis de datos",
+      "puntaje_max": 3.0,
+      "aliases": [
+        "tecnicas de procesamiento y analisis de datos",
+        "procesamiento y analisis de datos",
+        "analisis de datos",
+        "tratamiento y analisis de datos",
+        "tecnicas de analisis de datos"
+      ],
+      "items": [
+        {
+          "id": "15.1",
+          "criterio": "Se especifican las pruebas estadísticas que se usarán para contrastar las hipótesis (t de Student, ANOVA, regresión, correlación de Pearson/Spearman, etc.).",
+          "peso": 1.5,
+          "parcial": 0.75,
+          "referencia": "HS2018 Cap. 10, pp. 270-310"
+        },
+        {
+          "id": "15.2",
+          "criterio": "Las pruebas estadísticas son coherentes con la escala de medición de las variables (paramétrica vs. no paramétrica).",
+          "peso": 1.0,
+          "parcial": 0.5,
+          "referencia": "HS2018 Cap. 10, pp. 270-310"
+        },
+        {
+          "id": "15.3",
+          "criterio": "Se menciona el software o herramienta de análisis (SPSS, R, Python, Excel) que se utilizará.",
+          "peso": 0.5,
+          "parcial": 0.25,
+          "referencia": "HS2018 Cap. 10, pp. 270-310"
+        }
+      ]
+    }
+  ]
+}

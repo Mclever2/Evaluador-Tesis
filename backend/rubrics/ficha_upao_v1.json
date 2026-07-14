@@ -1,0 +1,362 @@
+{
+  "id": "ficha_upao_v1",
+  "nombre": "Ficha de evaluación de proyecto de tesis UPAO",
+  "tipo": "escala_0_3",
+  "escala": {
+    "excelente": 3.0,
+    "bueno": 2.0,
+    "regular": 1.0,
+    "insuficiente": 0.0
+  },
+  "niveles_calidad": [],
+  "secciones": [
+    {
+      "id": "B01",
+      "nombre": "Título",
+      "puntaje_max": 9.0,
+      "aliases": [
+        "titulo",
+        "titulo del proyecto",
+        "titulo de la investigacion",
+        "titulo tentativo"
+      ],
+      "items": [
+        {
+          "id": "1",
+          "criterio": "El título es claro, conciso y refleja fielmente el contenido y el propósito de la investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "2",
+          "criterio": "El título articula las variables, espacio y tiempo de la investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "3",
+          "criterio": "El estudio se enmarca en la línea de investigación que promueve el programa de estudios.",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "nombre": "Planteamiento del problema",
+      "puntaje_max": 21.0,
+      "aliases": [
+        "planteamiento del problema",
+        "el problema",
+        "problema de investigacion",
+        "realidad problematica",
+        "descripcion del problema",
+        "plan de investigacion"
+      ],
+      "items": [
+        {
+          "id": "4",
+          "criterio": "El problema central del estudio describe con claridad la realidad social, económica, cultural, científica o tecnológica que motiva la investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "5",
+          "criterio": "El problema central del estudio recoge el estado de la investigación (antecedentes) de las variables de estudio.",
+          "peso": 3.0
+        },
+        {
+          "id": "6",
+          "criterio": "El objetivo general guarda relación con el problema.",
+          "peso": 3.0
+        },
+        {
+          "id": "7",
+          "criterio": "Los objetivos específicos derivan del objetivo general.",
+          "peso": 3.0
+        },
+        {
+          "id": "8",
+          "criterio": "Se explica porque el estudio es relevante y qué aportaciones hará al campo de investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "9",
+          "criterio": "El problema está claramente formulado.",
+          "peso": 3.0
+        },
+        {
+          "id": "10",
+          "criterio": "Se detalla la justificación de la investigación, precisando cómo contribuirá al conocimiento existente y su impacto potencial.",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B03",
+      "nombre": "Marco teórico",
+      "puntaje_max": 21.0,
+      "aliases": [
+        "marco teorico",
+        "antecedentes",
+        "bases teoricas",
+        "fundamentacion teorica",
+        "marco referencial"
+      ],
+      "items": [
+        {
+          "id": "11",
+          "criterio": "Los antecedentes guardan relación con el problema de investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "12",
+          "criterio": "Las bases teóricas - científica proporcionan una base sólida con teorías, modelos y conceptos relevantes.",
+          "peso": 3.0
+        },
+        {
+          "id": "13",
+          "criterio": "La definición de términos básicos define claramente términos técnicos y específicos para evitar confusiones.",
+          "peso": 3.0
+        },
+        {
+          "id": "14",
+          "criterio": "Las citas textuales o de paráfrasis son concordantes con la naturaleza de las variables.",
+          "peso": 3.0
+        },
+        {
+          "id": "15",
+          "criterio": "Los textos y autores citados se encuentran en las referencias bibliográficas.",
+          "peso": 3.0
+        },
+        {
+          "id": "16",
+          "criterio": "Los autores asumen una postura crítica y no solo copia de las ideas de los autores citados.",
+          "peso": 3.0
+        },
+        {
+          "id": "17",
+          "criterio": "Se citan a los autores conforme a las normas internacionales (HARVARD, VANCOUVER, APA, ISO).",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B04",
+      "nombre": "Hipótesis y variables",
+      "puntaje_max": 12.0,
+      "aliases": [
+        "hipotesis y variables",
+        "hipotesis",
+        "variables",
+        "operacionalizacion de variables"
+      ],
+      "items": [
+        {
+          "id": "18",
+          "criterio": "Las hipótesis guardan relación con el problema de investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "19",
+          "criterio": "Si hay hipótesis específicas, estas derivan de problemas derivados.",
+          "peso": 3.0
+        },
+        {
+          "id": "20",
+          "criterio": "Es clara la definición operacional de las variables: dimensiones o indicadores.",
+          "peso": 3.0
+        },
+        {
+          "id": "21",
+          "criterio": "La matriz de consistencia asegura que todos los elementos del estudio están alineados.",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B05",
+      "nombre": "Marco metodológico",
+      "puntaje_max": 18.0,
+      "aliases": [
+        "marco metodologico",
+        "metodologia",
+        "material y metodos",
+        "diseno metodologico",
+        "metodologia de la investigacion",
+        "materiales y metodos"
+      ],
+      "items": [
+        {
+          "id": "22",
+          "criterio": "El Tipo de investigación y el Método de investigación guarda relación con el problema de investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "23",
+          "criterio": "Se presenta el esquema (gráfico) del diseño de investigación.",
+          "peso": 3.0
+        },
+        {
+          "id": "24",
+          "criterio": "Define claramente la población y muestra de estudio. Si fuera el caso, se hace uso del cálculo estadístico para el tamaño y selección de la muestra.",
+          "peso": 3.0
+        },
+        {
+          "id": "25",
+          "criterio": "Describe los instrumentos de recolección de datos de manera detallada en correspondencia con el problema y diseño metodológico.",
+          "peso": 3.0
+        },
+        {
+          "id": "26",
+          "criterio": "Especifica el procedimiento de ejecución del estudio.",
+          "peso": 3.0
+        },
+        {
+          "id": "27",
+          "criterio": "Especifica las técnicas de procesamiento y análisis de datos apropiadas conforme al problema y naturaleza de las variables.",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B06",
+      "nombre": "Aspectos administrativos",
+      "puntaje_max": 12.0,
+      "aliases": [
+        "aspectos administrativos",
+        "cronograma",
+        "presupuesto",
+        "administracion del proyecto",
+        "cronograma y presupuesto"
+      ],
+      "items": [
+        {
+          "id": "28",
+          "criterio": "El cronograma detalla todas las actividades y plazos para el desarrollo del proyecto.",
+          "peso": 3.0
+        },
+        {
+          "id": "29",
+          "criterio": "Se detallan claramente los recursos humanos y materiales para ejecutar el proyecto.",
+          "peso": 3.0
+        },
+        {
+          "id": "30",
+          "criterio": "El Presupuesto estima los costos de los bienes y servicios requeridos para ejecutar el proyecto.",
+          "peso": 3.0
+        },
+        {
+          "id": "31",
+          "criterio": "Se precisa las fuentes de financiamiento para ejecutar el proyecto: propia y/o externas.",
+          "peso": 3.0
+        }
+      ]
+    },
+    {
+      "id": "B07",
+      "nombre": "Referencias bibliográficas",
+      "puntaje_max": 6.0,
+      "aliases": [
+        "referencias bibliograficas",
+        "referencias",
+        "bibliografia"
+      ],
+      "items": [
+        {
+          "id": "32",
+          "criterio": "Se encuentran incorporados todos los autores citados.",
+          "peso": 3.0
+        },
+        {
+          "id": "33",
+          "criterio": "La redacción de las referencias bibliográficas es conforme a las normas internacionales (HARVARD, VANCOUVER, APA, ISO).",
+          "peso": 3.0
+        }
+      ]
+    }
+  ],
+  "conversion_vigesimal": [
+    {
+      "min": 96,
+      "max": 100,
+      "nota": 20
+    },
+    {
+      "min": 91,
+      "max": 95,
+      "nota": 19
+    },
+    {
+      "min": 86,
+      "max": 90,
+      "nota": 18
+    },
+    {
+      "min": 81,
+      "max": 85,
+      "nota": 17
+    },
+    {
+      "min": 76,
+      "max": 80,
+      "nota": 16
+    },
+    {
+      "min": 71,
+      "max": 75,
+      "nota": 15
+    },
+    {
+      "min": 66,
+      "max": 70,
+      "nota": 14
+    },
+    {
+      "min": 61,
+      "max": 65,
+      "nota": 13
+    },
+    {
+      "min": 56,
+      "max": 60,
+      "nota": 12
+    },
+    {
+      "min": 51,
+      "max": 55,
+      "nota": 11
+    },
+    {
+      "min": 46,
+      "max": 50,
+      "nota": 10
+    },
+    {
+      "min": 41,
+      "max": 45,
+      "nota": 9
+    },
+    {
+      "min": 36,
+      "max": 40,
+      "nota": 8
+    },
+    {
+      "min": 31,
+      "max": 35,
+      "nota": 7
+    },
+    {
+      "min": 26,
+      "max": 30,
+      "nota": 6
+    },
+    {
+      "min": 21,
+      "max": 25,
+      "nota": 5
+    },
+    {
+      "min": 0,
+      "max": 20,
+      "nota": 0
+    }
+  ]
+}
