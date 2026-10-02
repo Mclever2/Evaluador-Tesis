@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field
 # ── Salidas estructuradas de los jueces (una llamada por par juez-sección) ───
 
 NivelTresNiveles = Literal["cumple", "parcial", "no_cumple"]
+NivelDicotomico = Literal["cumple", "no_cumple"]
 
 DIMENSIONES_TRANSVERSALES = ("coherencia_interna", "formalidad_registro", "claridad_tono")
 
@@ -38,6 +39,36 @@ class CalificacionItemPonderado(BaseModel):
 
 class RespuestaSeccionPonderada(BaseModel):
     calificaciones: list[CalificacionItemPonderado]
+
+
+class CalificacionItemDicotomico(BaseModel):
+    """Calificación de un ítem en la rúbrica dicotómica (Cumple = 1 / No cumple = 0).
+
+    Mismo protocolo de juez auditor: `deficiencias` antes de `nivel`. El esquema
+    no admite "parcial": la salida estructurada lo impide en origen.
+    """
+
+    item_id: str = Field(description="Id del criterio, tal como aparece en la lista (p. ej. '1.1')")
+    verificacion: str = Field(
+        description="Componente por componente de ESTE criterio: 'componente: cita breve del "
+        "texto' o 'componente: ausente'. 60 palabras o menos"
+    )
+    deficiencias: str = Field(
+        description="Qué componentes de ESTE criterio faltan, están incompletos, son incorrectos "
+        "o están contradichos, según la verificación; 'ninguna' si no falta nada"
+    )
+    nivel: NivelDicotomico
+    evidencia: str = Field(
+        description="Cita textual del proyecto de 25 palabras o menos con referencia de "
+        "sección; si el nivel es no_cumple por ausencia: 'no se encontró evidencia'"
+    )
+    observacion: str = Field(
+        description="Diagnóstico de 30 palabras o menos, sin proponer redacciones alternativas"
+    )
+
+
+class RespuestaSeccionDicotomica(BaseModel):
+    calificaciones: list[CalificacionItemDicotomico]
 
 
 class CalificacionItemEscala(BaseModel):
@@ -76,7 +107,7 @@ class RespuestaSegmentacionLLM(BaseModel):
     asignaciones: list[AsignacionSeccion]
 
 
-RespuestaSeccion = Union[RespuestaSeccionPonderada, RespuestaSeccionEscala]
+RespuestaSeccion = Union[RespuestaSeccionPonderada, RespuestaSeccionEscala, RespuestaSeccionDicotomica]
 
 
 class ResultadoJuez(BaseModel):
@@ -107,6 +138,9 @@ class ItemEvaluado(BaseModel):
     discrepancia: bool = False
     evidencia: str = ""
     observacion: str = ""
+    # Calificación completa de cada juez (verificación, deficiencias, nivel,
+    # evidencia, observación): trazabilidad del voto individual.
+    detalle_jueces: dict[str, dict] = Field(default_factory=dict)
 
 
 class SeccionEvaluada(BaseModel):

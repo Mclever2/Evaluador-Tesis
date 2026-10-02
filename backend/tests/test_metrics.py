@@ -76,6 +76,25 @@ class TestCitasReferencias:
         assert citas.referencias_nunca_citadas == ["ramos (2015)"]
         assert citas.aproximado is True
 
+    def test_apellido_compuesto_empareja_por_cualquier_token(self):
+        """La cita narrativa no siempre captura el primer apellido del compuesto:
+        'Zéniz Ramos et al. (2024)' se extrae como 'ramos (2024)' y debe
+        emparejar con la entrada 'Zéniz Ramos, D. F.' (caso real)."""
+        cuerpo = (
+            "En la investigación de Zéniz Ramos et al. (2024) se evaluó un sistema web. "
+            "El estudio confirma el enfoque aplicado (Maldonado et al., 2023). "
+            "Según Intriago et al. (2020), la gestión mejora con control financiero. "
+        )
+        referencias = (
+            "REFERENCIAS BIBLIOGRÁFICAS\n"
+            "Castro Maldonado, J. J. (2023). La investigación aplicada. Tecnura.\n"
+            "López-Intriago, C. F. (2020). Gestión financiera. Koinonía.\n"
+            "Zéniz Ramos, D. F. (2024). Sistema web comercial. Innovación y Software.\n"
+        )
+        citas = _citas_referencias(cuerpo, cuerpo + "\n" + referencias)
+        assert citas.citas_sin_referencia == []
+        assert citas.referencias_nunca_citadas == []
+
 
 class TestLegibilidadYLexico:
     def test_legibilidad_en_rangos_plausibles(self):

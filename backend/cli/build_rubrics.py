@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 from rubrics import RUBRICS_DIR
-from rubrics.parser import FICHA_PENDIENTE_MSG, parse_especifica, parse_ficha_upao
+from rubrics.parser import FICHA_PENDIENTE_MSG, parse_dicotomica, parse_especifica, parse_ficha_upao
 
 ROOT = Path(__file__).resolve().parents[2]
 DOCS = ROOT / "docs"
@@ -43,6 +43,17 @@ def main() -> int:
     if advertencias:
         print("\nAdvertencias del parser (la fuente manda; no se corrigio nada):")
         for adv in advertencias:
+            print(f"  [!] {adv.encode('ascii', 'replace').decode()}")
+
+    dicotomica = DOCS / "rubrica_dicotomica_v2.md"
+    if dicotomica.exists():
+        rub_d, adv_d = parse_dicotomica(dicotomica.read_text(encoding="utf-8"))
+        destino_d = RUBRICS_DIR / f"{rub_d.id}.json"
+        destino_d.write_text(rub_d.model_dump_json(indent=2, exclude_none=True), encoding="utf-8")
+        print(f"\n[OK] {rub_d.id}: {len(rub_d.secciones)} dimensiones, {rub_d.total_items} items, "
+              f"maximo {rub_d.puntaje_maximo:g} pts (dicotomica)")
+        print(f"     -> {destino_d}")
+        for adv in adv_d:
             print(f"  [!] {adv.encode('ascii', 'replace').decode()}")
 
     ficha = DOCS / "ficha_upao.md"

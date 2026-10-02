@@ -39,6 +39,10 @@ _RE_ROL_INLINE = re.compile(
     rf"^\s*(AUTOR(?:ES|A|AS)?|(?:CO-?)?ASESOR(?:A)?)\s*:\s*(?:{_HONORIFICO}\s*)?(.+)$",
     re.IGNORECASE,
 )
+# Plantilla UPAO (sección GENERALIDADES): "Apellidos y nombres: Ponce Vásquez, McBreck"
+_RE_APELLIDOS_NOMBRES = re.compile(
+    r"^\s*apellidos?\s+y\s+nombres?\s*:?\s*(.+)$", re.IGNORECASE
+)
 _RE_HONORIFICO_LINEA = re.compile(rf"^\s*{_HONORIFICO}\s+(.+)$")
 
 # Un nombre plausible: 2 a 6 palabras capitalizadas o en MAYÚSCULAS, admite
@@ -91,6 +95,11 @@ def _detectar_nombres(paginas: list[Pagina]) -> tuple[list[str], list[str]]:
     for pagina in paginas[:_PAGINAS_CARATULA]:
         lineas = pagina.texto.splitlines()
         rol_pendiente: str | None = None
+        # Último rol visto en la página: la plantilla UPAO intercala líneas de
+        # datos ("Dirección:", "Email:") entre los "Apellidos y nombres:" de
+        # cada autor, así que rol_pendiente ya se consumió cuando llega el
+        # segundo autor.
+        ultimo_rol: str | None = None
         for linea in lineas:
             plana = linea.strip()
             if not plana:
@@ -98,20 +107,33 @@ def _detectar_nombres(paginas: list[Pagina]) -> tuple[list[str], list[str]]:
 
             # "AUTOR:" / "ASESOR:" en línea propia → los nombres vienen debajo
             if _RE_ROL_AUTOR.match(plana):
-                rol_pendiente = "autor"
+                rol_pendiente = ultimo_rol = "autor"
                 continue
             if _RE_ROL_ASESOR.match(plana):
-                rol_pendiente = "asesor"
+                rol_pendiente = ultimo_rol = "asesor"
                 continue
 
             # "ASESOR: Dr. Nombre Apellido" en la misma línea
             rol_inline = _RE_ROL_INLINE.match(plana)
             if rol_inline:
                 candidato = _limpiar_candidato(rol_inline.group(2))
-                destino = asesores if "ASESOR" in rol_inline.group(1).upper() else autores
+                es_asesor = "ASESOR" in rol_inline.group(1).upper()
+                destino = asesores if es_asesor else autores
                 if _es_nombre_plausible(candidato) and candidato not in destino:
                     destino.append(candidato)
                 rol_pendiente = None
+                ultimo_rol = "asesor" if es_asesor else "autor"
+                continue
+
+            # "Apellidos y nombres: Ponce Vásquez, McBreck" (plantilla UPAO):
+            # se asigna según el último rol visto (autor por defecto).
+            apellidos_nombres = _RE_APELLIDOS_NOMBRES.match(plana)
+            if apellidos_nombres:
+                candidato = _limpiar_candidato(apellidos_nombres.group(1))
+                if _es_nombre_plausible(candidato):
+                    destino = asesores if ultimo_rol == "asesor" else autores
+                    if candidato not in destino:
+                        destino.append(candidato)
                 continue
 
             # "Bach. APELLIDOS, Nombres" (honorífico al inicio de línea)

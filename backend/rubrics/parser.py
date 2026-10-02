@@ -44,14 +44,17 @@ _ALIASES: dict[int, list[str]] = {
         "realidad problematica",
         "descripcion de la realidad problematica",
         "planteamiento del problema",
+        # En la plantilla UPAO "1.1.2. Problema central del estudio" contiene la
+        # DESCRIPCIÓN de la realidad (así lo definen los ítems B02 de la ficha),
+        # no la pregunta: pertenece a S02. Como alias de S03 dejaba a S02 vacía.
+        "problema central del estudio",
+        "problema central",
     ],
     3: [
         "formulacion del problema",
         "enunciado del problema",
         "pregunta de investigacion",
         "problema general",
-        "problema central del estudio",
-        "problema central",
     ],
     4: ["objetivos", "objetivos de la investigacion", "objetivo general", "objetivos especificos"],
     5: [
@@ -245,6 +248,72 @@ def parse_especifica(md: str) -> tuple[Rubrica, list[str]]:
         niveles_calidad=niveles,
         secciones=secciones,
     )
+    return rubrica, advertencias
+
+
+def parse_dicotomica(md: str) -> tuple[Rubrica, list[str]]:
+    """Convierte docs/rubrica_dicotomica_v2.md al esquema JSON de dicotomica_v2.
+
+    Encabezados como en la rúbrica específica ("**N\. Nombre \[Máximo: K pts\]**")
+    y filas "| id | criterio | 1 | 0 |". Escala Cumple = 1 / No cumple = 0; sin
+    bandas de calidad (la fuente no las define y el parser no las inventa).
+    """
+    advertencias: list[str] = []
+    secciones: list[SeccionRubrica] = []
+    num_actual: int | None = None
+    nombre_actual = ""
+    max_actual = 0.0
+    items_actuales: list[ItemRubrica] = []
+
+    def cerrar_seccion() -> None:
+        nonlocal num_actual, items_actuales
+        if num_actual is None:
+            return
+        seccion = SeccionRubrica(
+            id=f"S{num_actual:02d}",
+            nombre=nombre_actual,
+            puntaje_max=max_actual,
+            aliases=[normalizar(a) for a in _ALIASES.get(num_actual, [nombre_actual])],
+            items=items_actuales,
+        )
+        if seccion.suma_pesos() != round(max_actual, 2):
+            advertencias.append(
+                f"{seccion.id}: {len(seccion.items)} ítems pero el máximo declarado es {max_actual:g}."
+            )
+        secciones.append(seccion)
+        num_actual = None
+        items_actuales = []
+
+    for linea in md.splitlines():
+        encabezado = _HEADER_RE.match(linea.strip())
+        if encabezado:
+            cerrar_seccion()
+            num_actual = int(encabezado.group(1))
+            nombre_actual = _unescape(encabezado.group(2))
+            max_actual = float(encabezado.group(3))
+            continue
+        if num_actual is not None and linea.strip().startswith("|"):
+            celdas = _celdas(linea)
+            if len(celdas) >= 4 and _ITEM_ID_RE.match(celdas[0]):
+                if int(celdas[0].split(".")[0]) != num_actual:
+                    advertencias.append(f"Ítem {celdas[0]} fuera de su dimensión {num_actual}.")
+                items_actuales.append(
+                    ItemRubrica(id=celdas[0], criterio=_unescape(celdas[1]), peso=float(celdas[2]))
+                )
+    cerrar_seccion()
+
+    rubrica = Rubrica(
+        id="dicotomica_v2",
+        nombre="Rúbrica dicotómica de calidad metodológica (100 ítems)",
+        tipo="dicotomica",
+        escala={"cumple": 1.0, "no_cumple": 0.0},
+        niveles_calidad=[],
+        secciones=secciones,
+    )
+    if len(secciones) != 15:
+        advertencias.append(f"Se esperaban 15 dimensiones y se encontraron {len(secciones)}.")
+    if rubrica.total_items != 100:
+        advertencias.append(f"Se esperaban 100 ítems y se encontraron {rubrica.total_items}.")
     return rubrica, advertencias
 
 

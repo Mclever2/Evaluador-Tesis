@@ -1,0 +1,199 @@
+# Firma de la plantilla oficial UPAO (Formato de proyecto de tesis - Ingeniería), sin relleno ni datos personales.
+# Generada con ingest.plantilla desde la plantilla sin llenar. Una línea por renglón normalizado.
+universidad privada antenor orrego
+facultad de ingeniería
+programa de estudio de ingeniería de
+computación y sistemas
+proyecto de tesis para optar el título profesional de
+ingeniero en computación y sistemas
+línea de investigación:
+robótica, automatización avanzada y sistemas inteligentes
+sub línea de investigación:
+autor:
+asesor:
+trujillo - perú
+indice de contenidos
+i.
+generalidades
+ii.
+plan de investigación
+planteamiento del estudio
+1.1. descripción y delimitación del problema
+1.1.1. formulación del problema
+1.1.2. problema central del estudio
+1.2. objetivos
+1.2.1. objetivo general
+1.2.2. objetivos específicos
+1.3. importancia del estudio
+1.4. justificación del estudio
+1.5. limitaciones del estudio
+marco teórico
+2.1. marco histórico
+2.2. investigaciones antecedentes relacionadas con el tema
+2.3. base teórica
+2.4. definición de términos básicos
+hipótesis y variables
+3.1. supuestos básicos
+3.2. hipótesis
+3.2.1. hipótesis general
+3.2.2. hipótesis específicas
+3.3. variables
+3.4. matriz de consistencia
+marco metodológico
+4.1. tipo de investigación
+4.2. método de investigación
+4.3. diseño del estudio
+4.4. población y muestra
+4.5. técnicas e instrumentos de recolección de datos
+4.6. procedimiento de ejecución del estudio
+4.7. técnicas de procesamiento y análisis de datos
+aspectos administrativos
+cronograma de actividades
+recursos
+5.2.1. recursos humanos
+5.2.2. recursos materiales
+presupuesto
+5.3.1. bienes
+5.3.2. servicios
+financiación
+5.4.1. con recursos propios
+5.4.2. con recursos externos
+referencias bibliográficas
+anexos
+1. título
+2. equipo investigador
+2.1. autor (es)
+apellidos y nombres:
+dirección:
+email:
+celular:
+2.2. asesor
+trujillo
+3. tipo de investigación (aplicada)
+3.1. de acuerdo con la orientación o finalidad
+aplicada
+3.2. de acuerdo con la técnica de contrastación
+4. línea de investigación
+5. unidad académica
+5.1. programa de estudio de ingeniería de computación y sistemas
+5.2. facultad de ingeniería
+5.3. universidad privada antenor orrego
+6. institución y localidad donde se desarrollará el proyecto (donde se va a validar)
+trabajo de campo o aplicación: xxx, ubicada en la av.
+tareas de gabinete: universidad privada antenor orrego ubicada en
+trujillo.
+7. duración total del proyecto
+7.1. fecha de inicio
+29/03/2027
+7.2. fecha de término
+12/12/2027
+8. horas dedicadas al proyecto
+8 horas semanales.
+1. planteamiento del estudio
+●
+● justificación teórica:
+● justificación práctica:
+● justificación metodológica:
+● justificación social:
+son aquellos que están dirigidos a un
+público amplio, sin requerimientos previos especializados, y, por lo tanto,
+abordan temas de interés general, usualmente desde una perspectiva
+relativamente simple.
+2. marco teórico
+en
+consecuencia, tampoco necesita utilizar argumentaciones para convencer.
+2.3.1. variable independiente
+son aquellos que están dirigidos a un público amplio, sin
+requerimientos previos especializados, y, por lo tanto, abordan temas
+de interés general, usualmente desde una perspectiva relativamente
+simple.
+2.3.2. variable dependiente
+3. hipótesis y variables
+● hg:
+simple. sus
+oraciones tienden a ser breves y fáciles de comprender, y su
+lenguaje es llano y accesible.
+● h1:
+● h2:
+● h3:
+tabla 1. operacionalización de variables.
+variable
+definición conceptual
+definición operacional
+dimensiones
+indicador
+fuente: elaborado por los autores .
+tabla 2. matriz de consistencia de la investigación.
+título de la investigación
+problema general
+objetivo general
+hipótesis general
+variables
+i
+ind
+epe
+ndi
+ent
+e
+problemas específicos
+objetivos específicos
+hipótesis específicas
+de
+pen
+die
+nte
+fuente: elaborado por los autores.
+4. marco metodológico
+el texto expositivo es aquel texto que ofrece al lector una información
+explícita sobre un tema puntual, de manera objetiva, es decir, sin que
+medie en ningún momento la opinión del autor o sus posicionamientos.
+5. aspectos administrativos
+5.1. cronograma de actividades
+actividades
+fecha inicio fecha término
+a. planificación
+b. implementación
+c. colecta de datos
+d. análisis e interpretación de datos
+e. elaboración del informe
+29/03/2025
+23/06/2025
+5.2. recursos
+1 tesista.
+1 asesor.
+x cuaderno de papel bond.
+x lapiceros.
+x engrapador.
+y etc.
+5.3. presupuesto
+n°
+bien
+cantida
+d
+costo unitario
+deprec.
+subtotal
+laptop core i5
+si
+silla de metal fija
+no
+celular
+n
+total
+xxxxx.xx
+servicio
+cantidad
+servicio de internet
+servicio de telefonía móvil
+servicio de movilidad
+5.4. financiación
+el proyecto es financiado por la universidad y por el (los) tesistas.
+no aplica.
+6. referencias bibliográficas
+las referencias preferentemente deben estar en iso 690, no obstante, puede
+utilizar cualquiera que esté aprobado en el reglamento de grados y títulos
+de la universidad, además, se recomienda un software de gestión de estás
+como zotero o mendeley (luego borrar).
+7. anexos
+anexo 1. instrumentos de recolección de datos
+anexo 2. otros

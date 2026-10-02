@@ -92,7 +92,9 @@
         "descripcion y delimitacion del problema",
         "realidad problematica",
         "descripcion de la realidad problematica",
-        "planteamiento del problema"
+        "planteamiento del problema",
+        "problema central del estudio",
+        "problema central"
       ],
       "items": [
         {
@@ -168,9 +170,7 @@
         "formulacion del problema",
         "enunciado del problema",
         "pregunta de investigacion",
-        "problema general",
-        "problema central del estudio",
-        "problema central"
+        "problema general"
       ],
       "items": [
         {

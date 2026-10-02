@@ -98,3 +98,47 @@ class TestAnonimizador:
         _, reporte, mapeo = anonimizar(doc)
         assert mapeo == {}
         assert any("autores" in a.lower() for a in reporte.advertencias)
+
+
+GENERALIDADES_UPAO = """GENERALIDADES
+Título
+Aplicación web para la gestión de gastos en micro emprendedores.
+Equipo investigador
+Autores
+Apellidos y nombres: \tPonce Vásquez, McBreck
+Dirección:\t\tTrujillo, La Esperanza
+Email:\t\t\tmponcev4@upao.edu.pe
+Apellidos y nombres: \tRivera Chamorro, Kristel Catherine
+Dirección:\t\tTrujillo
+Asesor
+Apellidos y nombres: \tDr. Cieza Mostacero, Segundo Edwin
+Dirección:\t\tTrujillo
+"""
+
+
+class TestGeneralidadesUpao:
+    """Plantilla UPAO: los nombres van en líneas 'Apellidos y nombres: X'
+    intercaladas con datos de contacto, así que el rol pendiente ya se consumió
+    cuando aparece el segundo autor (caso real del proyecto DOCX)."""
+
+    @staticmethod
+    def _doc() -> DocumentoExtraido:
+        return DocumentoExtraido(
+            nombre="upao.docx",
+            tipo="docx",
+            paginas=[Pagina(numero=1, texto=GENERALIDADES_UPAO)],
+            paginacion_real=False,
+        )
+
+    def test_detecta_ambos_autores_y_al_asesor(self):
+        _, reporte, mapeo = anonimizar(self._doc())
+        assert mapeo["[AUTOR_1]"] == "Ponce Vásquez, McBreck"
+        assert mapeo["[AUTOR_2]"] == "Rivera Chamorro, Kristel Catherine"
+        assert mapeo["[ASESOR_1]"] == "Cieza Mostacero, Segundo Edwin"
+        assert reporte.advertencias == []
+
+    def test_los_nombres_no_quedan_en_el_texto(self):
+        anonimo, _, _ = anonimizar(self._doc())
+        texto = anonimo.texto_completo
+        for dato in ["Ponce", "McBreck", "Rivera Chamorro", "Kristel", "Cieza Mostacero"]:
+            assert dato not in texto, f"quedó expuesto: {dato}"

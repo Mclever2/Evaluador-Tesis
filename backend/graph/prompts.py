@@ -15,7 +15,9 @@ from rubrics.models import Rubrica, SeccionRubrica
 
 PROMPTS_DIR = Path(__file__).resolve().parents[1] / "prompts"
 
-_ARCHIVOS_PROMPTS = ["juez_base.md", "juez_roles.md", "transversales.md", "segmentador.md"]
+_ARCHIVOS_PROMPTS = [
+    "juez_base.md", "juez_dicotomico.md", "juez_roles.md", "transversales.md", "segmentador.md",
+]
 
 
 def cargar_prompt(nombre: str) -> str:
@@ -50,6 +52,14 @@ def roles_jueces() -> dict[int, str]:
 
 
 def _texto_escala(rubrica: Rubrica) -> str:
+    if rubrica.tipo == "dicotomica":
+        return (
+            "- cumple (1 punto): el criterio se verifica de manera explícita en el documento "
+            "y todos sus componentes están presentes y correctos (deficiencias = \"ninguna\").\n"
+            "- no_cumple (0 puntos): el criterio no se verifica, se verifica de manera "
+            "incompleta, es incorrecto, queda contradicho por otra sección o está ausente.\n"
+            "No existe nivel intermedio: un cumplimiento incompleto es no_cumple."
+        )
     if rubrica.tipo == "ponderada_3_niveles":
         return (
             "- cumple: todos los componentes que el criterio exige están presentes y "
@@ -117,8 +127,9 @@ def render_prompt_juez(
     pasajes_rag: list[str] | None = None,
     contexto_trazabilidad: str = "",
 ) -> str:
+    plantilla = "juez_dicotomico.md" if rubrica.tipo == "dicotomica" else "juez_base.md"
     return _render(
-        cargar_prompt("juez_base.md"),
+        cargar_prompt(plantilla),
         {
             "rol_enfoque": rol_enfoque,
             "seccion_nombre": seccion.nombre,

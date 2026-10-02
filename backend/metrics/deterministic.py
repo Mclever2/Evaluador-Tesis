@@ -176,15 +176,18 @@ def _extraer_lista_referencias(texto_completo: str) -> str:
     return resto[: fin.start()] if fin else resto
 
 
-def _primer_apellido(apellido: str) -> str:
-    """'hernández-sampieri' y 'hernández sampieri' → 'hernández'."""
-    return re.split(r"[\s\-]", apellido.strip())[0]
+def _tokens_apellido(apellido: str) -> set[str]:
+    """'zéniz ramos' → {'zéniz', 'ramos'}; ignora partículas cortas ('de', 'la')."""
+    return {t for t in re.split(r"[\s\-]+", apellido.strip()) if len(t) >= 3}
 
 
 def _apellidos_equivalentes(a: str, b: str) -> bool:
-    """'hernández' empareja con 'hernández-sampieri' y 'hernández sampieri'
-    (en las citas APA suele usarse solo el primer apellido)."""
-    return a == b or _primer_apellido(a) == _primer_apellido(b)
+    """Apellidos compuestos: emparejan si comparten algún token significativo.
+
+    La cita narrativa suele capturar solo UN apellido y no siempre el primero:
+    'Ramos et al. (2024)' debe emparejar con la entrada 'Zéniz Ramos, D. F.'
+    y 'Maldonado et al. (2023)' con 'Castro Maldonado, J. J.'."""
+    return a == b or bool(_tokens_apellido(a) & _tokens_apellido(b))
 
 
 def _emparejadas(pares_a: set[tuple[str, str]], pares_b: set[tuple[str, str]]) -> set[tuple[str, str]]:

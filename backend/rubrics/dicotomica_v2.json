@@ -1,0 +1,720 @@
+{
+  "id": "dicotomica_v2",
+  "nombre": "Rúbrica dicotómica de calidad metodológica (100 ítems)",
+  "tipo": "dicotomica",
+  "escala": {
+    "cumple": 1.0,
+    "no_cumple": 0.0
+  },
+  "niveles_calidad": [],
+  "secciones": [
+    {
+      "id": "S01",
+      "nombre": "Título del proyecto de tesis",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "titulo",
+        "titulo del proyecto",
+        "titulo tentativo",
+        "titulo de la investigacion"
+      ],
+      "items": [
+        {
+          "id": "1.1",
+          "criterio": "El título identifica de manera explícita la variable dependiente o el fenómeno principal que se estudia.",
+          "peso": 1.0
+        },
+        {
+          "id": "1.2",
+          "criterio": "El título identifica de manera explícita la variable independiente, la intervención o el factor de comparación del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "1.3",
+          "criterio": "El título delimita la unidad de análisis o la población sobre la que se realiza el estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "1.4",
+          "criterio": "El título precisa el contexto institucional, geográfico o temporal en el que se desarrolla el estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "1.5",
+          "criterio": "Las variables y la unidad de análisis que enuncia el título coinciden con las del objetivo general.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "nombre": "Descripción y delimitación del problema",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "descripcion del problema",
+        "delimitacion del problema",
+        "descripcion y delimitacion del problema",
+        "realidad problematica",
+        "descripcion de la realidad problematica",
+        "planteamiento del problema",
+        "problema central del estudio",
+        "problema central"
+      ],
+      "items": [
+        {
+          "id": "2.1",
+          "criterio": "La descripción del problema se sustenta en evidencia empírica verificable, con datos estadísticos, reportes oficiales o estudios previos citados.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.2",
+          "criterio": "La descripción del problema cuantifica la situación actual en la unidad de análisis mediante al menos un indicador con su valor y su fuente.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.3",
+          "criterio": "La descripción del problema presenta la contextualización del fenómeno en el nivel nacional o regional.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.4",
+          "criterio": "La descripción del problema presenta la contextualización del fenómeno en el nivel local o institucional, referida a la unidad de análisis.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.5",
+          "criterio": "Se identifica de manera explícita la brecha de conocimiento o la deficiencia tecnológica o metodológica que origina el estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.6",
+          "criterio": "Se declaran las consecuencias de mantenerse el problema, sustentadas en datos o fuentes citadas.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.7",
+          "criterio": "La descripción del problema se delimita en espacio y tiempo, con indicación del lugar o institución y del periodo considerado.",
+          "peso": 1.0
+        },
+        {
+          "id": "2.8",
+          "criterio": "La descripción del problema expone la situación problemática sin mencionar la solución, herramienta o propuesta que el estudio plantea.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "nombre": "Formulación del problema",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "formulacion del problema",
+        "enunciado del problema",
+        "pregunta de investigacion",
+        "problema general"
+      ],
+      "items": [
+        {
+          "id": "3.1",
+          "criterio": "El problema general está redactado como una sola pregunta, entre signos de interrogación, que nombra de manera explícita las variables del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "3.2",
+          "criterio": "La pregunta general expresa el propósito cuantitativo que se examina, sea describir el nivel de una variable, relacionar variables, comparar grupos o determinar un efecto.",
+          "peso": 1.0
+        },
+        {
+          "id": "3.3",
+          "criterio": "Los problemas específicos están formulados como preguntas y se derivan del problema general.",
+          "peso": 1.0
+        },
+        {
+          "id": "3.4",
+          "criterio": "La pregunta general admite prueba empírica, dado que sus variables son observables o medibles.",
+          "peso": 1.0
+        },
+        {
+          "id": "3.5",
+          "criterio": "La pregunta general delimita la unidad de análisis y el contexto de ejecución del estudio, sea el periodo, el lugar o las condiciones de ensayo.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "nombre": "Objetivos de la investigación",
+      "puntaje_max": 7.0,
+      "aliases": [
+        "objetivos",
+        "objetivos de la investigacion",
+        "objetivo general",
+        "objetivos especificos"
+      ],
+      "items": [
+        {
+          "id": "4.1",
+          "criterio": "El objetivo general se inicia con un verbo en infinitivo que denota una acción observable y verificable.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.2",
+          "criterio": "El objetivo general corresponde de manera directa al problema general formulado.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.3",
+          "criterio": "El objetivo general contiene las mismas variables enunciadas en el problema general.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.4",
+          "criterio": "Los objetivos específicos están formulados con verbos en infinitivo que denotan acciones observables.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.5",
+          "criterio": "Cada variable o dimensión enunciada en el objetivo general es abordada por al menos un objetivo específico.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.6",
+          "criterio": "Cada objetivo específico aborda un aspecto distinto del problema y no se superpone con los demás.",
+          "peso": 1.0
+        },
+        {
+          "id": "4.7",
+          "criterio": "El objetivo general expresa como fin un resultado medible en la variable del estudio, sea su nivel, su relación o el efecto de una intervención, y no solo la ejecución de una tarea.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "nombre": "Justificación, importancia y viabilidad del estudio",
+      "puntaje_max": 6.0,
+      "aliases": [
+        "justificacion",
+        "importancia y justificacion",
+        "justificacion del estudio",
+        "justificacion de la investigacion",
+        "importancia del estudio"
+      ],
+      "items": [
+        {
+          "id": "5.1",
+          "criterio": "La justificación teórica precisa el vacío de conocimiento que el estudio contribuye a llenar o el aporte que hace a la teoría existente.",
+          "peso": 1.0
+        },
+        {
+          "id": "5.2",
+          "criterio": "La justificación práctica identifica a los beneficiarios directos y la manera concreta en que el estudio los beneficia.",
+          "peso": 1.0
+        },
+        {
+          "id": "5.3",
+          "criterio": "La justificación metodológica precisa qué instrumento, procedimiento o método emplea el estudio y por qué resulta útil para investigaciones similares.",
+          "peso": 1.0
+        },
+        {
+          "id": "5.4",
+          "criterio": "La justificación social precisa el impacto del estudio sobre la comunidad, el sector o la organización afectada por el problema.",
+          "peso": 1.0
+        },
+        {
+          "id": "5.5",
+          "criterio": "La importancia del estudio se sustenta en la magnitud, la frecuencia o la trascendencia del problema descrito.",
+          "peso": 1.0
+        },
+        {
+          "id": "5.6",
+          "criterio": "Se declara la viabilidad del estudio en términos de recursos, tiempo y acceso a las unidades de análisis.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "nombre": "Limitaciones del estudio",
+      "puntaje_max": 3.0,
+      "aliases": [
+        "limitaciones",
+        "limitaciones del estudio",
+        "alcances y limitaciones",
+        "viabilidad"
+      ],
+      "items": [
+        {
+          "id": "6.1",
+          "criterio": "Se identifica al menos una limitación de carácter metodológico, referida al diseño, la muestra, los instrumentos o el acceso a la información.",
+          "peso": 1.0
+        },
+        {
+          "id": "6.2",
+          "criterio": "Se precisa el efecto de cada limitación sobre la generalización o la interpretación de los resultados.",
+          "peso": 1.0
+        },
+        {
+          "id": "6.3",
+          "criterio": "Se declaran las medidas previstas para mitigar o controlar las limitaciones identificadas.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "nombre": "Marco teórico, antecedentes y bases teóricas",
+      "puntaje_max": 12.0,
+      "aliases": [
+        "marco teorico",
+        "antecedentes",
+        "antecedentes de la investigacion",
+        "bases teoricas",
+        "marco referencial",
+        "fundamentacion teorica",
+        "definicion de terminos"
+      ],
+      "items": [
+        {
+          "id": "7.1",
+          "criterio": "Cada antecedente aborda al menos una de las variables o constructos del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.2",
+          "criterio": "Los antecedentes se organizan bajo un criterio de clasificación declarado, sea por ámbito internacional, nacional y local, o por variable.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.3",
+          "criterio": "Cada antecedente es un estudio de investigación publicado, sea artículo científico, tesis o ponencia, identificable por los datos de su referencia.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.4",
+          "criterio": "Cada antecedente reporta el objetivo y la metodología del estudio citado.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.5",
+          "criterio": "Cada antecedente reporta el resultado principal obtenido en el estudio citado.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.6",
+          "criterio": "Cada antecedente precisa su aporte o su implicación para el presente estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.7",
+          "criterio": "El marco teórico señala de manera explícita las coincidencias o discrepancias entre los resultados de los antecedentes.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.8",
+          "criterio": "Las bases teóricas de cada variable del estudio se sustentan en teorías, modelos o enfoques identificados con su autor y año.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.9",
+          "criterio": "Las bases teóricas de la variable dependiente incluyen su definición conceptual con la fuente citada.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.10",
+          "criterio": "Las bases teóricas presentan el modelo, la norma técnica o la ecuación que sustenta la medición de la variable dependiente o principal.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.11",
+          "criterio": "El marco teórico sustenta de manera explícita la relación entre las variables que se propone en la hipótesis.",
+          "peso": 1.0
+        },
+        {
+          "id": "7.12",
+          "criterio": "La definición de términos básicos cubre los conceptos clave del título y del problema, con la fuente citada en cada caso.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "nombre": "Hipótesis",
+      "puntaje_max": 6.0,
+      "aliases": [
+        "hipotesis",
+        "hipotesis y variables",
+        "hipotesis general",
+        "hipotesis especificas",
+        "formulacion de la hipotesis",
+        "supuestos basicos"
+      ],
+      "items": [
+        {
+          "id": "8.1",
+          "criterio": "La hipótesis general establece de manera explícita la relación, la diferencia o el efecto entre la variable independiente y la variable dependiente.",
+          "peso": 1.0
+        },
+        {
+          "id": "8.2",
+          "criterio": "La hipótesis general está redactada como proposición afirmativa y no como pregunta ni como enunciado de deseo.",
+          "peso": 1.0
+        },
+        {
+          "id": "8.3",
+          "criterio": "Los términos que nombran las variables en la hipótesis coinciden con los empleados en la operacionalización.",
+          "peso": 1.0
+        },
+        {
+          "id": "8.4",
+          "criterio": "Cada hipótesis específica se deriva de la hipótesis general y aborda una de sus variables o dimensiones.",
+          "peso": 1.0
+        },
+        {
+          "id": "8.5",
+          "criterio": "La hipótesis es susceptible de contrastación empírica con los datos que el estudio propone recoger.",
+          "peso": 1.0
+        },
+        {
+          "id": "8.6",
+          "criterio": "Se formulan la hipótesis nula y la hipótesis alterna que corresponden al contraste estadístico previsto.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "nombre": "Variables y operacionalización",
+      "puntaje_max": 9.0,
+      "aliases": [
+        "variables",
+        "operacionalizacion de variables",
+        "operacionalizacion",
+        "variables y operacionalizacion",
+        "definicion y operacionalizacion de variables"
+      ],
+      "items": [
+        {
+          "id": "9.1",
+          "criterio": "Cada variable del estudio está identificada y clasificada según su función, sea independiente, dependiente o interviniente.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.2",
+          "criterio": "La definición conceptual de cada variable se sustenta en un autor citado.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.3",
+          "criterio": "La definición operacional precisa el procedimiento mediante el cual la variable se medirá en este estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.4",
+          "criterio": "Las dimensiones, propiedades o parámetros de cada variable están sustentados en una fuente teórica o técnica citada.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.5",
+          "criterio": "Los indicadores son observables o medibles y corresponden a la dimensión que representan.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.6",
+          "criterio": "Se precisa la escala de medición de cada variable, sea nominal, ordinal, de intervalo o de razón.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.7",
+          "criterio": "La matriz de operacionalización consigna, para cada variable, sus dimensiones, indicadores, ítems o unidades de medida e instrumento.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.8",
+          "criterio": "Todas las variables enunciadas en la hipótesis aparecen operacionalizadas en la matriz.",
+          "peso": 1.0
+        },
+        {
+          "id": "9.9",
+          "criterio": "Los indicadores declarados se corresponden con los ítems o reactivos del instrumento de recolección de datos.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "nombre": "Matriz de consistencia",
+      "puntaje_max": 4.0,
+      "aliases": [
+        "matriz de consistencia"
+      ],
+      "items": [
+        {
+          "id": "10.1",
+          "criterio": "El problema general, el objetivo general y la hipótesis general guardan correspondencia entre sí.",
+          "peso": 1.0
+        },
+        {
+          "id": "10.2",
+          "criterio": "Los problemas, objetivos e hipótesis específicos guardan correspondencia uno a uno y coinciden en su número.",
+          "peso": 1.0
+        },
+        {
+          "id": "10.3",
+          "criterio": "Las variables, dimensiones e indicadores consignados en la matriz coinciden con los declarados en la operacionalización.",
+          "peso": 1.0
+        },
+        {
+          "id": "10.4",
+          "criterio": "La metodología consignada en la matriz coincide con la declarada en el marco metodológico, en tipo, diseño, población, muestra e instrumentos.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "nombre": "Tipo, enfoque y alcance de la investigación",
+      "puntaje_max": 5.0,
+      "aliases": [
+        "tipo y metodo de investigacion",
+        "tipo de investigacion",
+        "metodo de investigacion",
+        "enfoque de investigacion",
+        "tipo y nivel de investigacion"
+      ],
+      "items": [
+        {
+          "id": "11.1",
+          "criterio": "El enfoque cuantitativo está declarado y es coherente con la naturaleza del problema y de los objetivos.",
+          "peso": 1.0
+        },
+        {
+          "id": "11.2",
+          "criterio": "El tipo de investigación, básica o aplicada, está declarado y justificado en función del propósito del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "11.3",
+          "criterio": "El alcance del estudio, exploratorio, descriptivo, correlacional o explicativo, está declarado de manera explícita.",
+          "peso": 1.0
+        },
+        {
+          "id": "11.4",
+          "criterio": "El alcance declarado se justifica con el estado del conocimiento reportado en los antecedentes.",
+          "peso": 1.0
+        },
+        {
+          "id": "11.5",
+          "criterio": "El método de investigación está declarado como hipotético deductivo, deductivo o analítico sintético.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "nombre": "Diseño del estudio",
+      "puntaje_max": 7.0,
+      "aliases": [
+        "diseno del estudio",
+        "diseno de investigacion",
+        "diseno de la investigacion",
+        "diseno de contrastacion",
+        "diseno metodologico"
+      ],
+      "items": [
+        {
+          "id": "12.1",
+          "criterio": "El diseño está clasificado como experimental, cuasiexperimental, preexperimental o no experimental, según exista o no manipulación de la variable independiente.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.2",
+          "criterio": "El diseño específico está identificado con la denominación que le corresponde dentro de su clasificación.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.3",
+          "criterio": "El diseño se representa mediante el esquema o la notación simbólica que corresponde a su tipo.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.4",
+          "criterio": "El corte temporal del estudio, transversal o longitudinal, está declarado de manera explícita.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.5",
+          "criterio": "Se precisa cómo se conforman los grupos o la muestra que se mide, sea por asignación aleatoria, por grupos intactos o como una sola muestra.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.6",
+          "criterio": "Se declaran las amenazas a la validez interna previstas y las medidas de control adoptadas frente a ellas.",
+          "peso": 1.0
+        },
+        {
+          "id": "12.7",
+          "criterio": "El diseño declarado corresponde al tipo de hipótesis planteada, sea descriptiva, correlacional, comparativa o causal.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "nombre": "Población, muestra y muestreo",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "poblacion y muestra",
+        "poblacion",
+        "muestra",
+        "muestreo",
+        "unidad de analisis"
+      ],
+      "items": [
+        {
+          "id": "13.1",
+          "criterio": "La población está definida con indicación de sus elementos, su ubicación y su tamaño.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.2",
+          "criterio": "Los criterios de inclusión están declarados de manera explícita.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.3",
+          "criterio": "Los criterios de exclusión están declarados de manera explícita.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.4",
+          "criterio": "Cada criterio de inclusión y de exclusión está justificado en relación con el fenómeno estudiado.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.5",
+          "criterio": "Se reporta el procedimiento de determinación del tamaño de la muestra con los parámetros empleados, o se justifica el trabajo con la población completa.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.6",
+          "criterio": "El tipo de muestreo, probabilístico o no probabilístico, está declarado con su denominación específica.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.7",
+          "criterio": "El tipo de muestreo declarado es coherente con el diseño y con el alcance del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "13.8",
+          "criterio": "Se describe el procedimiento concreto de selección o captación de las unidades que integran la muestra.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "nombre": "Técnicas e instrumentos de recolección de datos",
+      "puntaje_max": 8.0,
+      "aliases": [
+        "tecnicas e instrumentos de recoleccion de datos",
+        "tecnicas e instrumentos",
+        "instrumentos de recoleccion de datos",
+        "tecnicas de recoleccion de datos",
+        "recoleccion de datos"
+      ],
+      "items": [
+        {
+          "id": "14.1",
+          "criterio": "La técnica de recolección de datos está declarada y es coherente con el diseño y con las variables del estudio.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.2",
+          "criterio": "El instrumento está identificado con su denominación, su autor y su año, o se declara de manera explícita como de elaboración propia.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.3",
+          "criterio": "Se describe la estructura del instrumento, con indicación del número de ítems y de las dimensiones que evalúa.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.4",
+          "criterio": "Se precisa la escala de respuesta del instrumento y su procedimiento de calificación.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.5",
+          "criterio": "Se reporta la evidencia de validez de contenido del instrumento, con indicación del procedimiento empleado.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.6",
+          "criterio": "Se declara el procedimiento para estimar o sustentar la confiabilidad del instrumento, sea un coeficiente estadístico, la concordancia entre evaluadores, la repetibilidad del equipo o el valor reportado en estudios previos.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.7",
+          "criterio": "Se declara, con su fuente, el valor mínimo de confiabilidad con que se aceptará el instrumento, como un coeficiente de referencia o la tolerancia de la norma de ensayo.",
+          "peso": 1.0
+        },
+        {
+          "id": "14.8",
+          "criterio": "Se describe el procedimiento de aplicación del instrumento, con indicación de los responsables y del momento de la recolección.",
+          "peso": 1.0
+        }
+      ]
+    },
+    {
+      "id": "S15",
+      "nombre": "Técnicas de procesamiento y análisis de datos",
+      "puntaje_max": 7.0,
+      "aliases": [
+        "tecnicas de procesamiento y analisis de datos",
+        "procesamiento y analisis de datos",
+        "analisis de datos",
+        "tratamiento y analisis de datos",
+        "tecnicas de analisis de datos"
+      ],
+      "items": [
+        {
+          "id": "15.1",
+          "criterio": "Se describe el procedimiento de organización, codificación y depuración de los datos previo al análisis.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.2",
+          "criterio": "Se especifican los estadísticos descriptivos que se emplearán, según la escala de medición de las variables.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.3",
+          "criterio": "Se especifican las pruebas estadísticas inferenciales con las que se contrastará cada hipótesis.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.4",
+          "criterio": "Se declara la prueba de normalidad o el criterio con el que se decidirá entre estadística paramétrica y no paramétrica.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.5",
+          "criterio": "Las pruebas seleccionadas son coherentes con el diseño, el número de grupos y la escala de medición de las variables.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.6",
+          "criterio": "Se declara el nivel de significancia con el que se tomarán las decisiones estadísticas.",
+          "peso": 1.0
+        },
+        {
+          "id": "15.7",
+          "criterio": "Se declara el tamaño del efecto o el intervalo de confianza con que se interpretará la magnitud de los resultados.",
+          "peso": 1.0
+        }
+      ]
+    }
+  ]
+}

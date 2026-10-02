@@ -8,6 +8,8 @@ en backend/rubrics/. Soportan dos tipos:
   con sus redondeos, p. ej. peso 0.75 con parcial 0.38).
 - "escala_0_3" (ficha_upao_v1): cada ítem se califica con un entero 0 a 3 y el
   total puede convertirse a nota vigesimal con la tabla oficial.
+- "dicotomica" (dicotomica_v2): cada ítem vale 1 (Cumple) o 0 (No cumple), sin
+  nivel intermedio; el total es la suma simple de 100 ítems.
 """
 
 from __future__ import annotations
@@ -62,7 +64,7 @@ class ConversionVigesimal(BaseModel):
 class Rubrica(BaseModel):
     id: str
     nombre: str
-    tipo: Literal["ponderada_3_niveles", "escala_0_3"]
+    tipo: Literal["ponderada_3_niveles", "escala_0_3", "dicotomica"]
     escala: dict[str, float]
     niveles_calidad: list[NivelCalidad] = Field(default_factory=list)
     secciones: list[SeccionRubrica]

@@ -24,7 +24,12 @@ Escala para cada dimensión:
 # Pasos de evaluación
 
 1. Lee el extracto del proyecto (secciones clave completas y el resto resumido por truncado).
-2. Para coherencia_interna, verifica que el título anuncia lo que el problema plantea, que los objetivos responden al problema, que las hipótesis responden a los objetivos y que el diseño puede contrastarlas.
+2. Para coherencia_interna, además de la cadena título→problema→objetivos→hipótesis→diseño, BUSCA ACTIVAMENTE contradicciones entre secciones y anótalas:
+   - El diseño declarado (p. ej. "experimental puro", "pre-post") coincide con su notación/diagrama Y con el procedimiento descrito (¿el diagrama muestra solo posprueba mientras el texto describe medición antes y después?).
+   - La unidad de análisis es la misma en población, muestra y criterios de inclusión (¿la población son "procesos/registros" pero la muestra y los criterios son "personas"?).
+   - El tipo/alcance es coherente con el muestreo (pretensión experimental o generalizable frente a muestreo por conveniencia no probabilístico).
+   - El número de problemas, objetivos e hipótesis específicos coincide y su numeración es consistente (sin etiquetas repetidas como "H1, H1, H1").
+   Toda contradicción demostrable limita coherencia_interna a 4 como máximo; si afecta el núcleo del estudio (diseño, medición, variables o unidad de análisis), a 3 como máximo. No asignes 5 si anotaste alguna contradicción.
 3. Para formalidad_registro y claridad_tono, juzga el texto tal como está escrito.
 4. Asigna el puntaje 1 a 5 de cada dimensión y justifica en 40 palabras o menos, citando de qué parte del texto proviene tu juicio.
 

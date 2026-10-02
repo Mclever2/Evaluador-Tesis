@@ -2,6 +2,10 @@
 
 Reglas (todas deterministas, sin LLM):
 - Mapeo ordinal en la rúbrica ponderada: cumple = 2, parcial = 1, no_cumple = 0.
+- Rúbrica dicotómica: cumple = 1, no_cumple = 0. Con 3 jueces la mediana es el
+  VOTO DE MAYORÍA (2 de 3); con un hueco (2 jueces) la mediana inferior exige
+  que ambos digan cumple. `discrepancia = True` cuando el ítem no es unánime
+  (rango 1): en binario no existe el rango 2 de la escala de 3 niveles.
 - Nivel final por ítem: MEDIANA de los jueces disponibles. Con número par de
   jueces (hueco en el panel) se usa la mediana inferior (criterio conservador
   y determinista).
@@ -36,9 +40,11 @@ from rubrics.models import ItemRubrica, Rubrica
 
 _ORDINAL = {"no_cumple": 0, "parcial": 1, "cumple": 2}
 _NIVEL_POR_ORDINAL = {v: k for k, v in _ORDINAL.items()}
+_ORDINAL_DICOTOMICO = {"no_cumple": 0, "cumple": 1}
+_NIVEL_POR_ORDINAL_DICOTOMICO = {v: k for k, v in _ORDINAL_DICOTOMICO.items()}
 
 _OBS_AUSENTE = "Sección no encontrada en el proyecto."
-_OBS_VACIA = "Sección presente pero sin contenido evaluable (vacía tras la segmentación)."
+_OBS_VACIA = "Sección presente pero sin contenido evaluable (vacía o solo texto de la plantilla)."
 _OBS_SIN_PANEL = "Sin calificación del panel para este ítem (falla de API registrada)."
 _EVIDENCIA_AUSENTE = "no se encontró evidencia"
 
@@ -64,6 +70,8 @@ def _consolidar_item(
 ) -> ItemEvaluado:
     """respuestas: juez → CalificacionItem (ponderada o escala) o None si no calificó."""
     escala_directa = rubrica.tipo == "escala_0_3"
+    dicotomica = rubrica.tipo == "dicotomica"
+    ordinal = _ORDINAL_DICOTOMICO if dicotomica else _ORDINAL
     niveles_jueces: dict[str, Optional[object]] = {}
     ordinales: list[int] = []
     calificaciones = {}
@@ -79,7 +87,7 @@ def _consolidar_item(
             ordinales.append(calificacion.puntaje)
         else:
             niveles_jueces[clave] = calificacion.nivel
-            ordinales.append(_ORDINAL[calificacion.nivel])
+            ordinales.append(ordinal[calificacion.nivel])
 
     if not ordinales:
         return ItemEvaluado(
@@ -95,13 +103,19 @@ def _consolidar_item(
         )
 
     mediana = mediana_inferior(ordinales)
-    discrepancia = (max(ordinales) - min(ordinales)) >= 2
+    umbral_discrepancia = 1 if dicotomica else 2
+    discrepancia = (max(ordinales) - min(ordinales)) >= umbral_discrepancia
 
     if escala_directa:
         nivel_final: object = mediana
         puntaje = float(mediana)
         puntaje_max = 3.0
         coincide = lambda c: c.puntaje == mediana  # noqa: E731
+    elif dicotomica:
+        nivel_final = _NIVEL_POR_ORDINAL_DICOTOMICO[mediana]
+        puntaje = item.peso if mediana == 1 else 0.0
+        puntaje_max = item.peso
+        coincide = lambda c: _ORDINAL_DICOTOMICO[c.nivel] == mediana  # noqa: E731
     else:
         nivel_final = _NIVEL_POR_ORDINAL[mediana]
         puntaje = _puntaje_ponderado(item, mediana)
@@ -117,10 +131,14 @@ def _consolidar_item(
     if discrepancia:
         observacion = f"[Discrepancia entre jueces] {observacion}"
 
+    detalle_jueces = {
+        f"juez{juez}": c.model_dump(exclude={"item_id"}) for juez, c in sorted(calificaciones.items())
+    }
     return ItemEvaluado(
         id=item.id,
         criterio=item.criterio,
         niveles_jueces=niveles_jueces,
+        detalle_jueces=detalle_jueces,
         nivel_final=nivel_final,
         puntaje=round(puntaje, 2),
         puntaje_max=puntaje_max,
@@ -193,7 +211,7 @@ def agregar(
 ) -> tuple[list[SeccionEvaluada], dict, list[DimensionTransversal], PanelInfo]:
     """Consolida el panel. Devuelve (secciones, totales, transversales, panel)."""
     presentes = {s.seccion_id for s in segmentacion.presentes}
-    palabras_por_seccion = {s.seccion_id: s.palabras for s in segmentacion.presentes}
+    palabras_por_seccion = {s.seccion_id: s.palabras_evaluables for s in segmentacion.presentes}
     secciones_out: list[SeccionEvaluada] = []
     items_evaluados = 0
     items_discrepantes: list[str] = []

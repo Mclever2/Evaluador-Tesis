@@ -16,6 +16,7 @@ from pydantic import BaseModel
 from graph.llm import Invocador
 from graph.prompts import render_prompt_juez, render_prompt_transversales, roles_jueces
 from graph.schemas import (
+    RespuestaSeccionDicotomica,
     RespuestaSeccionEscala,
     RespuestaSeccionPonderada,
     RespuestaTransversales,
@@ -94,11 +95,10 @@ def evaluar_con_juez(
     on_progreso: Optional[Callable[[dict], None]] = None,
 ) -> ResultadoJuez:
     """Ejecuta el lote completo de un juez: secciones activas presentes + transversales."""
-    schema = (
-        RespuestaSeccionPonderada
-        if rubrica.tipo == "ponderada_3_niveles"
-        else RespuestaSeccionEscala
-    )
+    schema = {
+        "ponderada_3_niveles": RespuestaSeccionPonderada,
+        "dicotomica": RespuestaSeccionDicotomica,
+    }.get(rubrica.tipo, RespuestaSeccionEscala)
     resultado = ResultadoJuez(juez=cfg.numero, modelo=cfg.modelo)
 
     presentes = {s.seccion_id: s for s in segmentacion.presentes}
@@ -106,7 +106,7 @@ def evaluar_con_juez(
     for seccion in rubrica.secciones:
         if seccion.id not in secciones_activas or seccion.id not in presentes:
             continue  # ausentes y no activas: sin llamada (el agregador las resuelve)
-        if presentes[seccion.id].palabras < MIN_PALABRAS_EVALUABLES:
+        if presentes[seccion.id].palabras_evaluables < MIN_PALABRAS_EVALUABLES:
             continue  # sin contenido evaluable: no se gasta llamada (agregador puntúa 0)
         pasajes = contexto_rag(seccion.id) if contexto_rag else []
         prompt = render_prompt_juez(
