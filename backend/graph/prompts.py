@@ -17,6 +17,7 @@ PROMPTS_DIR = Path(__file__).resolve().parents[1] / "prompts"
 
 _ARCHIVOS_PROMPTS = [
     "juez_base.md", "juez_dicotomico.md", "juez_roles.md", "transversales.md", "segmentador.md",
+    "argumentacion_toulmin.md", "coherencia_global.md",
 ]
 
 
@@ -38,6 +39,11 @@ def _render(plantilla: str, valores: dict[str, str]) -> str:
     for clave, valor in valores.items():
         plantilla = plantilla.replace("{" + clave + "}", valor)
     return plantilla
+
+
+def render(plantilla: str, valores: dict[str, str]) -> str:
+    """Reemplazo literal de marcadores {nombre}; usado por los análisis de coherencia."""
+    return _render(plantilla, valores)
 
 
 def roles_jueces() -> dict[int, str]:

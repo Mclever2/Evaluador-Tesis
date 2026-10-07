@@ -89,7 +89,9 @@ class TestGrafoCompleto:
         assert all(s.subtotal == 0 for s in ausentes)
         assert resultado.panel.pct_discrepancia == 0
         assert resultado.panel.panel_incompleto is False
-        assert [d.mediana for d in resultado.dimensiones_transversales] == [4, 4, 4]
+        assert [d.mediana for d in resultado.dimensiones_transversales] == [4, 4]
+        # Sin invocador de análisis inyectado, los análisis de coherencia no se ejecutan
+        assert resultado.argumentacion is None and resultado.coherencia_global is None
         # 3 jueces × (13 secciones + 1 transversal) = 42 llamadas de 100/40 y 200/30
         assert resultado.costo.tokens_entrada == 3 * (13 * 100 + 200)
         assert resultado.costo.usd_estimado is None  # modelos dobles sin precio

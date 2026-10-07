@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     judge3_model: str = "gpt-4o-mini"
     eval_temperature: float = 0.0
     eval_seed: int = 42
+    # Modelo de los análisis de coherencia externos a la rúbrica (índice argumentativo de Toulmin y
+    # coherencia global). Un solo modelo: en los pilotos, gpt-4o-mini no siguió las reglas.
+    analysis_model: str = "gpt-4.1"
 
     embed_model: str = "intfloat/multilingual-e5-small"
     chroma_dir: Path = ROOT / "data" / "chroma"

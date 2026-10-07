@@ -17,7 +17,14 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { exportarEvaluacion } from "@/lib/api";
-import { colorNivel, colorNivelItem, etiquetaNivelItem, NOMBRE_DIMENSION } from "@/lib/format";
+import {
+  colorNivel,
+  colorNivelItem,
+  etiquetaNivelItem,
+  NOMBRE_COMPONENTE,
+  NOMBRE_CONTRADICCION,
+  NOMBRE_DIMENSION,
+} from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { EvaluacionResultado, ItemEvaluado, SeccionEvaluada } from "@/types";
 
@@ -320,6 +327,102 @@ export default function ResultDetail({
               )}
             </section>
           </div>
+
+          {(resultado.argumentacion || resultado.coherencia_global) && (
+            <div className="grid sm:grid-cols-2 gap-4">
+              <section className="glass rounded-3xl p-5">
+                <h2 className="font-semibold mb-1">Coherencia global</h2>
+                {resultado.coherencia_global ? (
+                  <>
+                    <p className="text-[13px] flex items-center justify-between">
+                      <span className="text-muted-foreground">
+                        {resultado.coherencia_global.contradicciones_nucleo} del núcleo ·{" "}
+                        {resultado.coherencia_global.contradicciones_menores} menores
+                      </span>
+                      <span className="font-semibold tabular-nums">{resultado.coherencia_global.nota}/5</span>
+                    </p>
+                    {resultado.coherencia_global.contradicciones.length === 0 ? (
+                      <p className="mt-2 text-[13px] text-muted-foreground">Sin contradicciones entre las partes del proyecto.</p>
+                    ) : (
+                      <ul className="mt-2 space-y-2.5">
+                        {resultado.coherencia_global.contradicciones.map((c, i) => (
+                          <li key={i} className="text-[12px] leading-snug">
+                            <span
+                              className={cn(
+                                "font-medium",
+                                c.gravedad === "nucleo" ? "text-destructive" : "text-[#FF9500]",
+                              )}
+                            >
+                              {NOMBRE_CONTRADICCION[c.tipo] ?? c.tipo} ({c.gravedad === "nucleo" ? "núcleo" : "menor"})
+                            </span>
+                            <p className="mt-0.5">
+                              <span className="text-muted-foreground">{c.seccion_a}:</span> «{c.cita_a}»
+                            </p>
+                            <p>
+                              <span className="text-muted-foreground">{c.seccion_b}:</span> «{c.cita_b}»
+                            </p>
+                            <p className="text-muted-foreground">{c.explicacion}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No disponible.</p>
+                )}
+                <p className="mt-3 text-[11px] text-muted-foreground">
+                  Nota por regla fija a partir de contradicciones con citas verificadas. No reemplaza al puntaje de rúbrica.
+                </p>
+              </section>
+
+              <section className="glass rounded-3xl p-5">
+                <h2 className="font-semibold mb-3">Índice argumentativo (Toulmin)</h2>
+                {resultado.argumentacion ? (
+                  <ul className="space-y-3">
+                    {resultado.argumentacion.secciones.map((s) => (
+                      <li key={s.seccion_id} className="text-[13px]">
+                        <div className="flex items-center justify-between">
+                          <span className="font-medium">{s.nombre}</span>
+                          <span className="font-semibold tabular-nums">
+                            {s.indice_estructural == null ? "—" : `${Math.round(s.indice_estructural * 100)}%`}
+                          </span>
+                        </div>
+                        {s.elegible ? (
+                          <>
+                            <div className="mt-1 flex flex-wrap gap-1">
+                              {["afirmacion", "dato", "garantia", "respaldo", "calificador", "refutacion"].map((c) => (
+                                <span
+                                  key={c}
+                                  className={cn(
+                                    "px-1.5 py-0.5 rounded-md text-[11px]",
+                                    s.presentes.includes(c) ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground",
+                                  )}
+                                >
+                                  {NOMBRE_COMPONENTE[c]}
+                                </span>
+                              ))}
+                            </div>
+                            <p className="mt-1 text-[11px] text-muted-foreground">
+                              Nivel {s.nivel}/5 · {s.oraciones} oraciones
+                            </p>
+                          </>
+                        ) : (
+                          <p className="mt-1 text-[12px] text-muted-foreground">
+                            No analizada: la sección no está redactada completa ({s.palabras} palabras propias).
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No disponible.</p>
+                )}
+                <p className="mt-3 text-[11px] text-muted-foreground">
+                  Componentes de Toulmin presentes sobre 6. No reemplaza al puntaje de rúbrica.
+                </p>
+              </section>
+            </div>
+          )}
 
           <section className="glass rounded-3xl p-5">
             <h2 className="font-semibold flex items-center gap-2 mb-2">

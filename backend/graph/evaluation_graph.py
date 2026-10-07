@@ -1,6 +1,8 @@
 """Grafo de evaluación del ECM (LangGraph).
 
 Topología: orquestador-segmentador → (juez_1 ‖ juez_2 ‖ juez_3) → agregador.
+Después del grafo se calculan, sin alterar la rúbrica: las métricas determinísticas, el índice
+argumentativo de Toulmin (graph/argumentacion.py) y la coherencia global (graph/coherencia_global.py).
 
 Los invocadores LLM se INYECTAN: los tests usan dobles con la misma firma y
 nunca llaman a la API. Cada resultado registra versión de rúbrica, modo,
@@ -21,7 +23,7 @@ from anonymizer.anonymizer import ReporteAnonimizacion
 from app.config import get_settings
 from graph.aggregator import agregar
 from graph.judges import ConfigJuez, ContextoRag, construir_configuracion_panel, evaluar_con_juez
-from graph.llm import Invocador, UsoLLM, costo_usd, crear_invocadores_panel
+from graph.llm import Invocador, UsoLLM, costo_usd, crear_invocador, crear_invocadores_panel
 from graph.prompts import hash_prompts
 from graph.schemas import Costo, EvaluacionResultado, ResultadoJuez
 from graph.segmenter import ResultadoSegmentacion, segmentar
@@ -83,11 +85,19 @@ class PanelEvaluador:
         modelos: Optional[dict[int, str]] = None,
         contexto_rag: Optional[ContextoRag] = None,
         on_evento: Optional[OnEvento] = None,
+        invocador_analisis: Optional[Invocador] = None,
+        modelo_analisis: Optional[str] = None,
     ) -> None:
         settings = get_settings()
         self.modelos = modelos or {
             1: settings.judge1_model, 2: settings.judge2_model, 3: settings.judge3_model
         }
+        # Análisis de coherencia (Toulmin y coherencia global). En producción se crea su invocador; si
+        # los jueces se inyectan (pruebas) y no se inyecta este, los análisis no se ejecutan.
+        self.modelo_analisis = modelo_analisis or settings.analysis_model
+        if invocador_analisis is None and invocadores is None:
+            invocador_analisis = crear_invocador(self.modelo_analisis, settings)
+        self.invocador_analisis = invocador_analisis
         self.invocadores = invocadores or crear_invocadores_panel(settings)
         self.contexto_rag = contexto_rag
         self.on_evento = on_evento or (lambda e: None)
@@ -234,4 +244,48 @@ class PanelEvaluador:
                  "detalle": f"Métricas determinísticas no disponibles ({exc}); "
                             "la calificación del panel no se ve afectada"}
             )
+        self.analizar_coherencia(resultado, estado_final["segmentacion"])
         return resultado
+
+    def analizar_coherencia(self, resultado: EvaluacionResultado, segmentacion: ResultadoSegmentacion) -> None:
+        if self.invocador_analisis is not None:
+            aplicar_analisis_coherencia(resultado, segmentacion, self.invocador_analisis,
+                                        self.modelo_analisis, self.on_evento)
+
+
+def aplicar_analisis_coherencia(
+    resultado: EvaluacionResultado,
+    segmentacion: ResultadoSegmentacion,
+    invocador: Invocador,
+    modelo: str,
+    on_evento: Optional[OnEvento] = None,
+) -> None:
+    """Índice argumentativo (Toulmin) y coherencia global: externos a la rúbrica.
+
+    No alteran los puntajes de la rúbrica. Como las métricas determinísticas, un fallo aquí no
+    invalida la calificación del panel: el análisis afectado queda en None. Lo usan el grafo y
+    cli/coherencia.py (que completa evaluaciones ya guardadas sin repetir la rúbrica).
+    """
+    from graph.argumentacion import analizar_argumentacion
+    from graph.coherencia_global import analizar_coherencia_global
+
+    on_evento = on_evento or (lambda e: None)
+    analisis = [
+        ("argumentacion", "Analizando la argumentación (Toulmin)", analizar_argumentacion),
+        ("coherencia_global", "Analizando la coherencia global", analizar_coherencia_global),
+    ]
+    for campo, detalle, funcion in analisis:
+        on_evento({"tipo": "fase", "detalle": detalle})
+        try:
+            valor, usos = funcion(segmentacion, invocador, modelo)
+        except Exception as exc:  # noqa: BLE001 — degradación controlada
+            on_evento({"tipo": "fase", "detalle": f"{detalle}: no disponible ({exc}); "
+                                                 "la calificación del panel no se ve afectada"})
+            continue
+        setattr(resultado, campo, valor)
+        for uso in usos:
+            resultado.costo.tokens_entrada += uso.tokens_entrada
+            resultado.costo.tokens_salida += uso.tokens_salida
+            usd = costo_usd(modelo, uso.tokens_entrada, uso.tokens_salida)
+            if usd is not None:
+                resultado.costo.usd_estimado = round((resultado.costo.usd_estimado or 0) + usd, 6)

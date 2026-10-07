@@ -40,7 +40,26 @@ export function colorNivelItem(nivel: NivelJuez): string {
 }
 
 export const NOMBRE_DIMENSION: Record<string, string> = {
-  coherencia_interna: "Coherencia interna",
+  coherencia_interna: "Coherencia interna (versión anterior)",
   formalidad_registro: "Formalidad y registro",
   claridad_tono: "Claridad y tono",
+};
+
+export const NOMBRE_COMPONENTE: Record<string, string> = {
+  afirmacion: "Afirmación",
+  dato: "Datos",
+  garantia: "Garantía",
+  respaldo: "Respaldo",
+  calificador: "Calificador",
+  refutacion: "Refutación",
+};
+
+export const NOMBRE_CONTRADICCION: Record<string, string> = {
+  variables: "Variables",
+  unidad_analisis: "Unidad de análisis",
+  proposito: "Propósito",
+  diseno: "Diseño",
+  muestreo: "Muestreo",
+  numero_correspondencia: "Correspondencia de específicos",
+  otra: "Otra",
 };

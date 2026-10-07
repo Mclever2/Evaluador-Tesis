@@ -11,7 +11,10 @@ from pydantic import BaseModel, Field
 NivelTresNiveles = Literal["cumple", "parcial", "no_cumple"]
 NivelDicotomico = Literal["cumple", "no_cumple"]
 
-DIMENSIONES_TRANSVERSALES = ("coherencia_interna", "formalidad_registro", "claridad_tono")
+# La coherencia interna 1-5 (juicio global del panel) se retiró: tenía bajo acuerdo entre jueces
+# (CCI = 0.40). La reemplaza la coherencia global (graph/coherencia_global.py), con nota por regla fija.
+# "coherencia_interna" sigue admitida en el Literal para poder leer evaluaciones anteriores.
+DIMENSIONES_TRANSVERSALES = ("formalidad_registro", "claridad_tono")
 
 
 class CalificacionItemPonderado(BaseModel):
@@ -98,6 +101,39 @@ class RespuestaTransversales(BaseModel):
     dimensiones: list[CalificacionDimension]
 
 
+# ── Salidas estructuradas de los análisis de coherencia (externos a la rúbrica) ──
+
+FuncionToulmin = Literal["afirmacion", "dato", "garantia", "respaldo", "refutacion", "ninguno"]
+
+
+class EtiquetaOracion(BaseModel):
+    id: int
+    funcion: FuncionToulmin
+    responde_en: Optional[int] = Field(default=None, description="Solo para refutacion: id de la oración que "
+                                                                 "responde a la objeción; null si no se responde.")
+
+
+class RespuestaArgumentacion(BaseModel):
+    etiquetas: list[EtiquetaOracion]
+
+
+TipoContradiccion = Literal["variables", "unidad_analisis", "proposito", "diseno", "muestreo",
+                            "numero_correspondencia", "otra"]
+
+
+class Contradiccion(BaseModel):
+    tipo: TipoContradiccion
+    seccion_a: str = Field(description="Nombre de la primera sección involucrada")
+    cita_a: str = Field(description="Fragmento LITERAL de la primera sección, 30 palabras o menos")
+    seccion_b: str = Field(description="Nombre de la segunda sección involucrada")
+    cita_b: str = Field(description="Fragmento LITERAL de la segunda sección, 30 palabras o menos")
+    explicacion: str = Field(description="Por qué ambas partes se contradicen, 30 palabras o menos")
+
+
+class RespuestaCoherencia(BaseModel):
+    contradicciones: list[Contradiccion] = Field(default_factory=list)
+
+
 class AsignacionSeccion(BaseModel):
     seccion_id: str
     indice_linea: Optional[int] = None
@@ -173,6 +209,56 @@ class Costo(BaseModel):
     usd_estimado: Optional[float] = None
 
 
+class OracionArgumentativa(BaseModel):
+    id: int
+    oracion: str
+    funcion: str
+    responde_en: Optional[int] = None
+    calificadores: list[str] = Field(default_factory=list)
+
+
+class SeccionArgumentativa(BaseModel):
+    seccion_id: str
+    nombre: str
+    elegible: bool
+    palabras: int = 0
+    proporcion_oraciones: float = 0.0
+    oraciones: int = 0
+    conteo: dict[str, int] = Field(default_factory=dict)
+    oraciones_con_calificador: int = 0
+    refutaciones_respondidas: int = 0
+    presentes: list[str] = Field(default_factory=list)
+    indice_estructural: Optional[float] = None  # componentes de Toulmin presentes / 6
+    nivel: Optional[int] = None  # 0-5, adaptado de Erduran et al. (2004); solo descriptivo
+    detalle: list[OracionArgumentativa] = Field(default_factory=list)
+
+
+class ResultadoArgumentacion(BaseModel):
+    """Índice argumentativo (Toulmin): coherencia DENTRO de las secciones argumentativas."""
+
+    version: str
+    modelo: str
+    secciones: list[SeccionArgumentativa] = Field(default_factory=list)
+    indice_proyecto: Optional[float] = None  # media de las secciones elegibles
+
+
+class ContradiccionVerificada(Contradiccion):
+    gravedad: Literal["nucleo", "menor"]
+
+
+class ResultadoCoherenciaGlobal(BaseModel):
+    """Coherencia global: contradicciones verificadas entre partes del proyecto y nota por regla fija."""
+
+    version: str
+    modelo: str
+    nota: int  # 1-5
+    contradicciones_nucleo: int = 0
+    contradicciones_menores: int = 0
+    propuestas: int = 0
+    contradicciones: list[ContradiccionVerificada] = Field(default_factory=list)
+    rechazadas: list[dict] = Field(default_factory=list)
+
+
 class EvaluacionResultado(BaseModel):
     project_id: str
     rubric_id: str
@@ -191,5 +277,8 @@ class EvaluacionResultado(BaseModel):
     nota_vigesimal: Optional[int] = None
     dimensiones_transversales: list[DimensionTransversal] = Field(default_factory=list)
     metricas_deterministicas: Optional[dict] = None  # se llena en el módulo metrics
+    # Análisis de coherencia externos a la rúbrica: no alteran sus puntajes. None si no se ejecutaron.
+    argumentacion: Optional[ResultadoArgumentacion] = None
+    coherencia_global: Optional[ResultadoCoherenciaGlobal] = None
     panel: PanelInfo = Field(default_factory=PanelInfo)
     costo: Costo = Field(default_factory=Costo)

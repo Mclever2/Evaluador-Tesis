@@ -12,8 +12,14 @@ resultado para trazabilidad (`graph/prompts.py`).
 - `juez_roles.md` — roles de enfoque del panel (juez 1 rigor metodológico,
   juez 2 coherencia y trazabilidad, juez 3 forma académica). El rol orienta la
   atención; no cambia escala ni criterios.
-- `transversales.md` — dimensiones transversales 1-5 (coherencia interna,
-  formalidad y registro, claridad y tono) con justificación breve.
+- `transversales.md` — dimensiones transversales 1-5 (formalidad y registro,
+  claridad y tono) con justificación breve. La coherencia interna se retiró:
+  la reemplaza `coherencia_global.md`.
+- `argumentacion_toulmin.md` — índice argumentativo (Toulmin, v1.1): función de
+  cada oración ya numerada por el sistema, con reglas de inclusión y exclusión.
+- `coherencia_global.md` — coherencia global (v1.3): lista de contradicciones
+  entre dos partes del proyecto, con cita de cada una; la nota la calcula una
+  regla fija.
 - `segmentador.md` — respaldo LLM del segmentador estructural, solo cuando la
   heurística de encabezados no alcanza el umbral.
 - `chat_informe.md` — (Fase 6) chat post-evaluación acotado al JSON del

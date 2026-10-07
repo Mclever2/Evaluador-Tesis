@@ -24,11 +24,27 @@ requisitos de primer orden.
 3. Un **agregador determinista** consolida por mediana ordinal, marca
    `discrepancia` cuando el rango entre jueces es 2, calcula subtotales, total
    y nivel de calidad, y sintetiza la observación final sin inventar contenido.
-4. Se reportan además **dimensiones transversales** (coherencia interna,
-   formalidad, claridad; escala 1 a 5 por mediana del panel) y **métricas
-   determinísticas** de texto (Fernández-Huerta, Szigriszt-Pazos, TTR, MTLD,
-   citas APA vs referencias, completitud estructural), que nunca alteran los
-   puntajes de rúbrica.
+4. Se reportan además **dimensiones transversales** (formalidad y claridad;
+   escala 1 a 5 por mediana del panel) y **métricas determinísticas** de texto
+   (Fernández-Huerta, Szigriszt-Pazos, TTR, MTLD, citas APA vs referencias,
+   completitud estructural), que nunca alteran los puntajes de rúbrica.
+5. Dos **análisis de coherencia**, también externos a la rúbrica, con un solo
+   modelo (`ANALYSIS_MODEL`, gpt-4.1 por defecto). En ambos el modelo no pone
+   la nota: identifica elementos del texto y la nota sale de una regla fija.
+   - **Índice argumentativo (Toulmin, v1.1, `graph/argumentacion.py`)**:
+     coherencia dentro de la descripción del problema (S02) y la justificación
+     (S05), si están redactadas completas. El sistema divide la sección en
+     oraciones, el modelo etiqueta la función de cada una (afirmación, dato,
+     garantía, respaldo, refutación), los calificadores se detectan con un
+     diccionario y el índice es componentes presentes / 6.
+   - **Coherencia global (v1.3, `graph/coherencia_global.py`)**: el modelo
+     lista contradicciones entre dos partes del proyecto con la cita de cada
+     una, el sistema verifica las citas y la nota de 1 a 5 sale de cuántas
+     contradicciones hay y de su gravedad. Reemplaza a la antigua dimensión
+     transversal "coherencia interna" (juicio global de 1 a 5, con bajo
+     acuerdo entre jueces: CCI = 0.40).
+   Las evaluaciones ya guardadas se completan sin repetir la rúbrica con
+   `python -m cli.coherencia ..\data\results\eval_xxx.json`.
 
 ## Requisitos (Windows)
 

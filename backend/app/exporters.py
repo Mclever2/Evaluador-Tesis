@@ -1,8 +1,9 @@
 """Exportación de resultados: CSV plano por proyecto y CSV consolidado.
 
 El consolidado tiene UNA FILA POR PROYECTO con total, nivel, subtotales por
-sección, dimensiones transversales, métricas determinísticas y banderas de
-discrepancia — listo para SPSS o Python (pandas.read_csv).
+sección, dimensiones transversales, métricas determinísticas, índice argumentativo
+(Toulmin), coherencia global y banderas de discrepancia — listo para SPSS o
+Python (pandas.read_csv).
 """
 
 from __future__ import annotations
@@ -41,6 +42,24 @@ def _columna_transversal(resultado: dict, dimension: str):
         if t.get("dimension") == dimension:
             return t.get("mediana")
     return None
+
+
+def _columnas_coherencia(resultado: dict) -> dict:
+    """Índice argumentativo (Toulmin) por sección y coherencia global; vacías si no se ejecutaron."""
+    arg = resultado.get("argumentacion") or {}
+    coh = resultado.get("coherencia_global") or {}
+    secciones = {s.get("seccion_id"): s for s in arg.get("secciones", [])}
+    columnas = {"toulmin_indice_proyecto": arg.get("indice_proyecto")}
+    for sid in ("S02", "S05"):
+        s = secciones.get(sid) or {}
+        columnas[f"toulmin_indice_{sid}"] = s.get("indice_estructural")
+        columnas[f"toulmin_nivel_{sid}"] = s.get("nivel")
+    columnas.update({
+        "coherencia_global": coh.get("nota"),
+        "contradicciones_nucleo": coh.get("contradicciones_nucleo"),
+        "contradicciones_menores": coh.get("contradicciones_menores"),
+    })
+    return columnas
 
 
 def fila_consolidada(resultado: dict) -> dict:
@@ -86,6 +105,7 @@ def fila_consolidada(resultado: dict) -> dict:
             "panel_incompleto": int(bool(panel.get("panel_incompleto"))),
         }
     )
+    fila.update(_columnas_coherencia(resultado))
     return fila
 
 

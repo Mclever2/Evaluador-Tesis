@@ -100,6 +100,47 @@ export interface PanelInfo {
   huecos: string[];
 }
 
+export interface SeccionArgumentativa {
+  seccion_id: string;
+  nombre: string;
+  elegible: boolean;
+  palabras: number;
+  oraciones: number;
+  conteo: Record<string, number>;
+  oraciones_con_calificador: number;
+  refutaciones_respondidas: number;
+  presentes: string[];
+  indice_estructural: number | null;
+  nivel: number | null;
+}
+
+export interface ResultadoArgumentacion {
+  version: string;
+  modelo: string;
+  secciones: SeccionArgumentativa[];
+  indice_proyecto: number | null;
+}
+
+export interface ContradiccionVerificada {
+  tipo: string;
+  seccion_a: string;
+  cita_a: string;
+  seccion_b: string;
+  cita_b: string;
+  explicacion: string;
+  gravedad: "nucleo" | "menor";
+}
+
+export interface ResultadoCoherenciaGlobal {
+  version: string;
+  modelo: string;
+  nota: number;
+  contradicciones_nucleo: number;
+  contradicciones_menores: number;
+  propuestas: number;
+  contradicciones: ContradiccionVerificada[];
+}
+
 export interface EvaluacionResultado {
   project_id: string;
   rubric_id: string;
@@ -118,6 +159,9 @@ export interface EvaluacionResultado {
   nota_vigesimal: number | null;
   dimensiones_transversales: DimensionTransversal[];
   metricas_deterministicas: MetricasDeterministicas | null;
+  // Análisis de coherencia externos a la rúbrica (ausentes en evaluaciones anteriores)
+  argumentacion?: ResultadoArgumentacion | null;
+  coherencia_global?: ResultadoCoherenciaGlobal | null;
   panel: PanelInfo;
   costo: { tokens_entrada: number; tokens_salida: number; usd_estimado: number | null };
 }
