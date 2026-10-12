@@ -30,6 +30,7 @@ PRECIOS_USD_POR_MTOK: dict[str, tuple[float, float]] = {
 class UsoLLM(BaseModel):
     tokens_entrada: int = 0
     tokens_salida: int = 0
+    lote: bool = False  # respuesta obtenida por la Batch API (se cobra a la mitad del precio)
 
 
 Invocador = Callable[[str, Type[BaseModel]], tuple[BaseModel, UsoLLM]]
@@ -59,8 +60,30 @@ def crear_invocador(modelo: str, settings: Settings | None = None) -> Invocador:
         timeout=120,
     )
 
-    @retry(wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(4), reraise=True)
+    from graph import lotes
+    from tenacity import retry_if_not_exception_type
+
+    @retry(wait=wait_exponential(multiplier=1, min=2, max=30), stop=stop_after_attempt(4), reraise=True,
+           retry=retry_if_not_exception_type(lotes.PendienteBatch))
     def _invocar(prompt: str, schema: Type[BaseModel]) -> tuple[BaseModel, UsoLLM]:
+        modo_lote = lotes.modo()
+        if modo_lote == "registrar":
+            lotes.registrar(lotes.cuerpo(llm, prompt, schema))
+            neutra = lotes.vacio(schema)
+            if neutra is not None and schema.__name__ in ("RespuestaArgumentacion", "RespuestaCoherencia"):
+                return neutra, UsoLLM()
+            raise lotes.PendienteBatch("solicitud registrada para el lote")
+        if modo_lote == "usar":
+            body = lotes.cuerpo(llm, prompt, schema)
+            resp = lotes.respuesta(body)
+            if resp is not None:
+                try:
+                    parsed, t_in, t_out = lotes.interpretar(resp, schema)
+                    return parsed, UsoLLM(tokens_entrada=t_in, tokens_salida=t_out, lote=True)
+                except Exception as exc:  # noqa: BLE001 — salida inválida: se repite en línea
+                    lotes.anotar_en_linea(body, f"salida del lote no válida: {exc}")
+            else:
+                lotes.anotar_en_linea(body, "no está en el lote")
         estructurado = llm.with_structured_output(schema, include_raw=True)
         salida = estructurado.invoke(prompt)
         parsed = salida.get("parsed")
